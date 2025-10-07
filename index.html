@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>MG Service Group SAS</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/feather-icons"></script>
+  <link rel="icon" type="image/jpeg" href="logo-mgservices-group.jpeg"/>
+  <style>
+    html{scroll-behavior:smooth}
+    .titulo-fuerte{font-family:'Anton',sans-serif;letter-spacing:1px}
+    .input-like{background:#f3f4f6;border-radius:10px;padding:14px 16px;border:2px solid #e5e7eb;outline:none}
+    .input-like:focus{border-color:#2563eb;background:#fff}
+    /* Modal */
+    .modal{display:none;position:fixed;z-index:9999;inset:0;background:rgba(0,0,0,.9)}
+    .modal-content{margin:auto;display:block;max-width:95%;max-height:90%;border-radius:10px}
+    .close{position:absolute;top:20px;right:40px;color:#fff;font-size:40px;font-weight:bold;cursor:pointer}
+    /* Animaciones */
+    @keyframes slideIn {0%{opacity:0;transform:translateX(-50px)}100%{opacity:1;transform:translateX(0)}}
+    .animate-slide-in{animation:slideIn 1s ease-out forwards}
+    .delay-200{animation-delay:.2s}.delay-400{animation-delay:.4s}
+    /* Toast */
+    #toast{position:fixed;right:16px;bottom:16px;background:#111827;color:white;padding:12px 16px;border-radius:10px;display:none;z-index:10000}
+  </style>
+</head>
+<body class="font-sans text-gray-800">
+
+  <!-- Header -->
+  <header class="bg-white shadow-md fixed w-full z-50">
+    <div class="container mx-auto flex justify-between items-center p-4">
+      <a href="#inicio">
+        <img src="logo-mgservices-group.jpeg" alt="MG Service Group SAS" class="h-20">
+      </a>
+      <nav class="hidden md:flex space-x-8 ml-12">
+        <a href="#inicio" class="px-4 py-2 hover:bg-black hover:text-white transition">Inicio</a>
+        <a href="#quienes" class="px-4 py-2 hover:bg-black hover:text-white transition">Quiénes Somos</a>
+        <a href="#servicios" class="px-4 py-2 hover:bg-black hover:text-white transition">Servicios</a>
+        <a href="#proyectos" class="px-4 py-2 hover:bg-black hover:text-white transition">Proyectos</a>
+        <a href="#aliados" class="px-4 py-2 hover:bg-black hover:text-white transition">Aliados</a>
+        <a href="#contacto" class="px-4 py-2 hover:bg-black hover:text-white transition">Contacto</a>
+        <a href="#politica" class="px-4 py-2 hover:bg-black hover:text-white transition">Política de Datos</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section id="inicio" class="relative h-[80vh] flex items-center justify-center text-center overflow-hidden">
+    <img src="metalica.png" alt="Estructuras metálicas" class="absolute inset-0 w-full h-full object-cover object-center bg-fixed">
+    <div class="absolute inset-0 bg-black/50"></div>
+    <div class="relative z-10 p-6">
+      <h1 class="text-4xl md:text-6xl font-bold text-white mb-4">Construimos el futuro contigo</h1>
+      <p class="text-lg md:text-2xl text-gray-200 mb-6">Estructuras seguras, eficientes y de alta calidad</p>
+      <a href="#contacto" class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg">Contáctanos</a>
+    </div>
+  </section>
+
+  <!-- Quiénes Somos -->
+  <section id="quienes" class="py-20 bg-[#e0f2fe]">
+    <div class="container mx-auto grid md:grid-cols-2 gap-8 px-6 md:px-0 items-center">
+      <div><h2 class="text-5xl font-bold titulo-fuerte text-black">Quiénes Somos</h2></div>
+      <div class="text-gray-800 font-semibold text-lg space-y-6">
+        <p>Somos una empresa especializada en diseño e instalación de cubiertas, fachadas, revestimientos, estructuras metálicas, instalación de panel en poliuretano y sistemas de enfriamiento para proyectos industriales, comerciales y residenciales.</p>
+        <p>Combinamos tecnología, experiencia técnica y soluciones estéticas para garantizar estructuras seguras, eficientes y de alta calidad.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Servicios -->
+<section id="servicios" class="py-16">
+  <div class="container mx-auto px-6 md:px-0">
+    <h2 class="text-3xl text-center mb-12 titulo-fuerte">Nuestros Servicios</h2>
+    <div class="grid md:grid-cols-3 gap-12 text-center">
+      
+      <!-- Diseño y Fabricación -->
+      <div class="relative group bg-white shadow-lg rounded-xl overflow-hidden">
+        <img src="diseño.png" alt="Diseño y Fabricación" 
+             class="w-full h-64 object-contain p-6 transition-transform duration-300 group-hover:scale-105">
+        <div class="p-4">
+          <h3 class="text-xl font-bold mb-2">Diseño y Fabricación</h3>
+          <p class="text-gray-600">Estructuras metálicas personalizadas y resistentes.</p>
+        </div>
+        <!-- Overlay -->
+        <div class="absolute inset-0 bg-black bg-opacity-90 text-white p-6 flex flex-col justify-center items-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+          <h4 class="text-lg font-bold mb-3">Más Información</h4>
+          <p class="text-sm leading-relaxed">
+            Fabricamos estructuras metálicas a la medida de tu proyecto: livianas, pesadas o industriales. 
+            Usamos tecnología de precisión, materiales de alta calidad y un equipo especializado para garantizar seguridad y durabilidad.
+          </p>
+        </div>
+      </div>
+
+      <!-- Mantenimiento Industrial -->
+      <div class="relative group bg-white shadow-lg rounded-xl overflow-hidden">
+        <img src="mantenimiento.png" alt="Mantenimiento" 
+             class="w-full h-64 object-contain p-6 transition-transform duration-300 group-hover:scale-105">
+        <div class="p-4">
+          <h3 class="text-xl font-bold mb-2">Mantenimiento Industrial</h3>
+          <p class="text-gray-600">Prevenir daños y alargar la vida útil.</p>
+        </div>
+        <!-- Overlay -->
+        <div class="absolute inset-0 bg-black bg-opacity-90 text-white p-6 flex flex-col justify-center items-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+          <h4 class="text-lg font-bold mb-3">Más Información</h4>
+          <p class="text-sm leading-relaxed">
+            Ofrecemos mantenimientos preventivos y correctivos para cubiertas y fachadas. 
+            Aseguramos un funcionamiento óptimo, reducimos riesgos de filtraciones y evitamos reparaciones costosas a futuro.
+          </p>
+        </div>
+      </div>
+
+      <!-- Panel en Poliuretano -->
+      <div class="relative group bg-white shadow-lg rounded-xl overflow-hidden">
+        <img src="panel.png" alt="Panel en Poliuretano" 
+             class="w-full h-64 object-contain p-6 transition-transform duration-300 group-hover:scale-105">
+        <div class="p-4">
+          <h3 class="text-xl font-bold mb-2">Panel en Poliuretano</h3>
+          <p class="text-gray-600">Eficiencia y aislamiento de alto nivel.</p>
+        </div>
+        <!-- Overlay -->
+        <div class="absolute inset-0 bg-black bg-opacity-90 text-white p-6 flex flex-col justify-center items-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+          <h4 class="text-lg font-bold mb-3">Más Información</h4>
+          <p class="text-sm leading-relaxed">
+            Instalamos paneles en poliuretano tipo sándwich, ideales para cámaras frigoríficas y cubiertas industriales. 
+            Garantizan aislamiento térmico, reducción de costos energéticos y un acabado impecable.
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+  <!-- Proyectos -->
+  <section id="proyectos" class="py-16 bg-gray-50">
+    <div class="container mx-auto px-6 md:px-0">
+      <h2 class="text-3xl text-center mb-12 titulo-fuerte">La Calidad en Cada Detalle</h2>
+
+      <!-- Carrusel -->
+      <div class="relative w-full max-w-6xl mx-auto overflow-hidden rounded-lg shadow-lg">
+        <div id="carousel" class="flex transition-transform duration-700 ease-in-out">
+          
+          <!-- Slide 1 -->
+          <div class="grid md:grid-cols-3 gap-6 flex-shrink-0 w-full px-4">
+            <div><img src="proyecto1.jpeg" class="w-full h-64 object-cover rounded-lg cursor-pointer" onclick="openLightbox(this.src)"></div>
+            <div><img src="proyecto2.jpeg" class="w-full h-64 object-cover rounded-lg cursor-pointer" onclick="openLightbox(this.src)"></div>
+            <div><img src="proyecto3.png"  class="w-full h-64 object-cover rounded-lg cursor-pointer" onclick="openLightbox(this.src)"></div>
+          </div>
+
+          <!-- Slide 2 -->
+          <div class="grid md:grid-cols-3 gap-6 flex-shrink-0 w-full px-4">
+            <div><img src="cubiertateja.jpeg" class="w-full h-64 object-cover rounded-lg cursor-pointer" onclick="openLightbox(this.src)"></div>
+            <div><img src="cubiertateja2.jpeg" class="w-full h-64 object-cover rounded-lg cursor-pointer" onclick="openLightbox(this.src)"></div>
+            <div><img src="cubiertateja3.jpeg" class="w-full h-64 object-cover rounded-lg cursor-pointer" onclick="openLightbox(this.src)"></div>
+          </div>
+
+          <!-- Slide 3 -->
+          <div class="grid md:grid-cols-3 gap-6 flex-shrink-0 w-full px-4">
+            <div><img src="cubiertateja4.jpeg" class="w-full h-64 object-cover rounded-lg cursor-pointer" onclick="openLightbox(this.src)"></div>
+            <div><img src="cubiertateja5.jpeg" class="w-full h-64 object-cover rounded-lg cursor-pointer" onclick="openLightbox(this.src)"></div>
+            <div><img src="cubiertateja6.jpeg" class="w-full h-64 object-cover rounded-lg cursor-pointer" onclick="openLightbox(this.src)"></div>
+          </div>
+        </div>
+
+        <!-- Botones de navegación -->
+        <button onclick="prevSlide()" class="absolute top-1/2 left-4 -translate-y-1/2 bg-black/50 text-white p-3 rounded-full hover:bg-black">
+          &#10094;
+        </button>
+        <button onclick="nextSlide()" class="absolute top-1/2 right-4 -translate-y-1/2 bg-black/50 text-white p-3 rounded-full hover:bg-black">
+          &#10095;
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Lightbox -->
+  <div id="lightbox" class="fixed inset-0 bg-black bg-opacity-90 hidden items-center justify-center z-50">
+    <span class="absolute top-6 right-10 text-white text-4xl cursor-pointer select-none" onclick="closeLightbox()">&times;</span>
+    <img id="lightboxImg" src="" alt="Imagen ampliada" 
+         class="max-w-5xl max-h-[90%] rounded-lg transform scale-75 opacity-0 transition-all duration-500 ease-in-out cursor-pointer"/>
+  </div>
+
+  <!-- Scripts -->
+  <script>
+    const carousel = document.getElementById("carousel");
+    const slides = carousel.children;
+    let index = 0;
+    let autoPlay;
+
+    function showSlide(i) {
+      index = (i + slides.length) % slides.length;
+      carousel.style.transform = `translateX(-${index * 100}%)`;
+    }
+
+    function nextSlide() {
+      showSlide(index + 1);
+      resetAutoPlay();
+    }
+
+    function prevSlide() {
+      showSlide(index - 1);
+      resetAutoPlay();
+    }
+
+    function startAutoPlay() {
+      autoPlay = setInterval(() => {
+        nextSlide();
+      }, 4000);
+    }
+
+    function resetAutoPlay() {
+      clearInterval(autoPlay);
+      startAutoPlay();
+    }
+
+    startAutoPlay();
+
+    // Lightbox
+    const lightbox = document.getElementById("lightbox");
+    const lightboxImg = document.getElementById("lightboxImg");
+
+    function openLightbox(src) {
+      lightbox.classList.remove("hidden");
+      lightbox.classList.add("flex");
+      lightboxImg.src = src;
+      setTimeout(() => {
+        lightboxImg.classList.remove("scale-75", "opacity-0");
+        lightboxImg.classList.add("scale-100", "opacity-100");
+      }, 50);
+    }
+
+    function closeLightbox() {
+      lightboxImg.classList.remove("scale-100", "opacity-100");
+      lightboxImg.classList.add("scale-75", "opacity-0");
+      setTimeout(() => {
+        lightbox.classList.add("hidden");
+        lightbox.classList.remove("flex");
+      }, 500);
+    }
+
+    lightbox.addEventListener("click", (e) => {
+      if (e.target === lightbox || e.target === lightboxImg) {
+        closeLightbox();
+      }
+    });
+  </script>
+
+
+
+  <!-- Modal -->
+  <div id="imageModal" class="modal">
+    <span class="close" onclick="closeModal()">&times;</span>
+    <img class="modal-content" id="modalImg" alt="">
+  </div>
+
+  <!-- Aliados -->
+  <section id="aliados" class="py-16 bg-white">
+    <div class="container mx-auto px-6 md:px-0 text-center">
+      <h2 class="text-3xl mb-12 titulo-fuerte">Grandes Aliados</h2>
+      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 items-center">
+        <img src="logo-metecno.png" alt="Metecno"  class="mx-auto h-20 object-contain hover:scale-105 transition">
+        <img src="arkos logo.png" alt="Arkos"     class="mx-auto h-20 object-contain hover:scale-105 transition">
+        <img src="agofer logo.png" alt="Agofer"   class="mx-auto h-20 object-contain hover:scale-105 transition">
+        <img src="cubricol logo.png" alt="Cubricol" class="mx-auto h-20 object-contain hover:scale-105 transition">
+        <img src="sika logo.png" alt="Sika"       class="mx-auto h-20 object-contain hover:scale-105 transition">
+      </div>
+    </div>
+  </section>
+
+  <!-- Mapa -->
+  <section id="mapa" class="py-10">
+    <div class="container mx-auto text-center px-6 md:px-0">
+      <h3 class="text-3xl titulo-fuerte mb-6">Nuestra Ubicación</h3>
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3976.7996820862633!2d-74.13708322601146!3d4.601168542468568!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e3f9f49db1585db%3A0xe50ad6b8dcf9bc01!2sCra.%2072j%20%2342g-21%20Sur%2C%20Bogot%C3%A1!5e0!3m2!1ses!2sco!4v1700000000000!5m2!1ses!2sco"
+              width="100%" height="400" style="border:0;" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+  </section>
+
+  <!-- Contacto -->
+  <section id="contacto" class="pt-12">
+    <div class="container mx-auto px-6 md:px-0 text-center">
+      <h2 class="titulo-fuerte text-4xl md:text-5xl">Su nuevo proyecto comienza aquí</h2>
+      <p class="mt-3 text-lg">¡Permítanos ayudarle con su proyecto y contáctenos hoy mismo!</p>
+    </div>
+    <div class="mt-8 bg-[#0e5a83] py-10">
+      <div class="container mx-auto px-6 md:px-16">
+        <form id="contactForm" class="space-y-4">
+          <div class="grid md:grid-cols-2 gap-4">
+            <input class="input-like" type="text" name="Nombre" placeholder="Nombre*" required>
+            <input class="input-like" type="text" name="Apellido" placeholder="Apellido*">
+          </div>
+          <div class="grid md:grid-cols-2 gap-4">
+            <input class="input-like" type="email" name="Email" placeholder="Correo electrónico*" required>
+            <input class="input-like" type="tel" name="Telefono" placeholder="Teléfono*">
+          </div>
+          <textarea class="input-like w-full" name="Mensaje" rows="5" placeholder="Mensaje*" required></textarea>
+
+          <label class="flex items-start gap-3 text-sm text-white/90">
+            <input type="checkbox" id="consent" required class="mt-1">
+            <span>Acepto el tratamiento de mis datos personales de acuerdo con la 
+              <a href="#politica" class="underline">Política de Privacidad</a>.
+            </span>
+          </label>
+
+          <div class="text-center">
+            <button id="submitBtn" type="submit" class="bg-black text-white px-10 py-3 rounded-lg hover:opacity-90 transition">Enviar</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+ <!-- Footer -->
+<footer class="bg-black text-white pt-12">
+  <div class="container mx-auto px-6 md:px-0 grid md:grid-cols-4 gap-8 border-b border-gray-700 pb-8">
+    <div class="flex flex-col items-start">
+      <a href="#inicio"><img src="logo-negro.png" alt="MG Service Group SAS" class="h-20 mb-4"></a>
+      <p class="text-sm text-gray-400">© 2025 MG Service Group SAS</p>
+    </div>
+    <div>
+      <h4 class="font-bold mb-4">Navegación</h4>
+      <ul class="space-y-2 text-gray-400">
+        <li><a href="#inicio" class="hover:text-blue-400">Inicio</a></li>
+        <li><a href="#quienes" class="hover:text-blue-400">Quiénes Somos</a></li>
+        <li><a href="#servicios" class="hover:text-blue-400">Servicios</a></li>
+        <li><a href="#proyectos" class="hover:text-blue-400">Proyectos</a></li>
+        <li><a href="#aliados" class="hover:text-blue-400">Aliados</a></li>
+        <li><a href="#contacto" class="hover:text-blue-400">Contacto</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4 class="font-bold mb-4">Contacto</h4>
+      <ul class="space-y-2 text-gray-400">
+        <li>Email: <a href="mailto:mgservicegroupsas@gmail.com" class="hover:text-blue-400">mgservicegroupsas@gmail.com</a></li>
+        <li>Tel 1: <a href="tel:+573143101649" class="hover:text-blue-400">+57 314 310 1649</a></li>
+        <li>Tel 2: <a href="tel:+573102264229" class="hover:text-blue-400">+57 310 226 4229</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4 class="font-bold mb-4">Síguenos</h4>
+      <div class="flex space-x-4">
+        <a href="https://www.instagram.com/mgservicegroupsas" target="_blank" class="p-2 bg-gray-800 rounded-full hover:bg-pink-600"><i data-feather="instagram"></i></a>
+        <a href="https://www.facebook.com/share/174gru12zB/" target="_blank" class="p-2 bg-gray-800 rounded-full hover:bg-blue-600"><i data-feather="facebook"></i></a>
+        <!-- WhatsApp corregido -->
+        <a href="https://wa.me/573143101649?text=Hola,%20quiero%20más%20información%20sobre%20sus%20servicios" 
+           target="_blank" 
+           class="p-2 bg-gray-800 rounded-full hover:bg-green-600">
+          <i data-feather="message-circle"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="text-center text-gray-500 text-sm mt-6 pb-6">
+    Todos los derechos reservados - MG Service Group SAS
+  </div>
+</footer>
+
+
+  <!-- Política de Privacidad -->
+  <section id="politica" class="py-12 bg-gray-50">
+    <div class="container mx-auto px-6 md:px-0 max-w-4xl">
+      <h3 class="text-2xl font-bold mb-4">Política de Tratamiento de Datos</h3>
+      <p class="text-gray-700 mb-3">
+        MG Service Group SAS, como responsable del tratamiento, informa que los datos personales
+        recolectados a través de este sitio serán utilizados con la finalidad de atender solicitudes,
+        cotizaciones, comunicaciones comerciales y seguimiento de proyectos. Los datos se almacenarán
+        en repositorios seguros y no serán compartidos con terceros sin autorización, salvo obligación legal.
+      </p>
+      <p class="text-gray-700 mb-3">
+        Como titular, puedes ejercer tus derechos de acceso, actualización, rectificación y supresión de datos
+        escribiendo a <a href="mailto:mgservicegroupsas@gmail.com" class="text-blue-600 underline">mgservicegroupsas@gmail.com</a>.
+        Esta política se acoge a la Ley 1581 de 2012 y normas complementarias.
+      </p>
+      <p class="text-gray-700">Al enviar el formulario, manifiestas que has leído y aceptas esta política.</p>
+    </div>
+  </section>
+
+  <!-- Toast -->
+  <div id="toast"></div>
+
+  <!-- Scripts -->
+  <script>
+    function openModal(img){ const m=document.getElementById("imageModal"); const mi=document.getElementById("modalImg"); m.style.display="block"; mi.src=img.src; }
+    function closeModal(){ document.getElementById("imageModal").style.display="none"; }
+
+    function showToast(text){ const t=document.getElementById('toast'); t.textContent=text; t.style.display='block'; setTimeout(()=>{t.style.display='none';}, 3500); }
+
+    // Nuevo endpoint de Google Apps Script
+    const GS_ENDPOINT = "https://script.google.com/macros/s/AKfycbyfY7eJWE0dWFLVqdVAh4vRQYkVcvBGazTM5uoML4RjfeJDDW9S24aLRgdenmyHIxCb/exec";
+
+    const form = document.getElementById("contactForm");
+    const submitBtn = document.getElementById("submitBtn");
+
+    form.addEventListener("submit", async function(e){
+      e.preventDefault();
+      const consent = document.getElementById("consent");
+      if(!consent.checked){ alert("Por favor acepta el tratamiento de datos personales."); return; }
+
+      submitBtn.disabled = true; submitBtn.textContent = 'Enviando…';
+
+      const payload = {
+        Nombre:   form.querySelector("[name=Nombre]").value,
+        Apellido: form.querySelector("[name=Apellido]").value,
+        Email:    form.querySelector("[name=Email]").value,
+        Telefono: form.querySelector("[name=Telefono]").value,
+        Mensaje:  form.querySelector("[name=Mensaje]").value,
+        sourceUrl: location.href
+      };
+
+      try{
+        await fetch(GS_ENDPOINT, {
+          method: "POST",
+          headers: { "Content-Type": "text/plain;charset=utf-8" },
+          body: JSON.stringify(payload)
+        });
+        showToast("✅ Registro enviado. Revisa tu correo y hoja.");
+        form.reset(); consent.checked = false;
+      }catch(err){
+        alert("❌ Error de red: " + err.message);
+      } finally {
+        submitBtn.disabled = false; submitBtn.textContent = 'Enviar';
+      }
+    });
+
+    feather.replace();
+  </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
