@@ -509,8 +509,37 @@
 
     feather.replace();
   </script>
+  <!-- Ajuste para corregir desplazamiento en navegación móvil -->
+  <script>
+    // Ajustar desplazamiento para compensar la altura del header fijo
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        const targetId = this.getAttribute('href');
+        if (targetId.startsWith("#") && targetId.length > 1) {
+          e.preventDefault();
+          const targetElement = document.querySelector(targetId);
+          const headerOffset = 100; // Ajusta si el header cambia de altura
+          const elementPosition = targetElement.getBoundingClientRect().top + window.scrollY;
+          const offsetPosition = elementPosition - headerOffset;
+
+          window.scrollTo({
+            top: offsetPosition,
+            behavior: "smooth"
+          });
+
+          // Si el menú móvil está abierto, se cierra al hacer clic
+          const mobileMenu = document.getElementById('mobile-menu');
+          if (mobileMenu && mobileMenu.classList.contains('open')) {
+            mobileMenu.classList.remove('open');
+            setTimeout(() => mobileMenu.classList.add('hidden'), 300);
+          }
+        }
+      });
+    });
+  </script>
 </body>
 </html>
+
 
 
 
