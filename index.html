@@ -27,13 +27,24 @@
 </head>
 <body class="font-sans text-gray-800">
 
-  <!-- Header -->
+    <!-- Header -->
   <header class="bg-white shadow-md fixed w-full z-50">
     <div class="container mx-auto flex justify-between items-center p-4">
       <a href="#inicio">
         <img src="logo-mgservices-group.jpeg" alt="MG Service Group SAS" class="h-20">
       </a>
-      <nav class="hidden md:flex space-x-8 ml-12">
+
+      <!-- Botón hamburguesa (solo móvil) -->
+      <button id="menuBtn" class="md:hidden text-gray-800 focus:outline-none">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none"
+             viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M4 6h16M4 12h16M4 18h16"/>
+        </svg>
+      </button>
+
+      <!-- Menú principal -->
+      <nav id="menuNav" class="hidden md:flex space-x-8 ml-12">
         <a href="#inicio" class="px-4 py-2 hover:bg-black hover:text-white transition">Inicio</a>
         <a href="#quienes" class="px-4 py-2 hover:bg-black hover:text-white transition">Quiénes Somos</a>
         <a href="#servicios" class="px-4 py-2 hover:bg-black hover:text-white transition">Servicios</a>
@@ -43,7 +54,31 @@
         <a href="#politica" class="px-4 py-2 hover:bg-black hover:text-white transition">Política de Datos</a>
       </nav>
     </div>
+
+    <!-- Menú desplegable móvil -->
+    <div id="mobileMenu" class="hidden md:hidden bg-white shadow-lg border-t border-gray-200">
+      <nav class="flex flex-col p-4 space-y-2 text-center">
+        <a href="#inicio" class="py-2 hover:bg-gray-100">Inicio</a>
+        <a href="#quienes" class="py-2 hover:bg-gray-100">Quiénes Somos</a>
+        <a href="#servicios" class="py-2 hover:bg-gray-100">Servicios</a>
+        <a href="#proyectos" class="py-2 hover:bg-gray-100">Proyectos</a>
+        <a href="#aliados" class="py-2 hover:bg-gray-100">Aliados</a>
+        <a href="#contacto" class="py-2 hover:bg-gray-100">Contacto</a>
+        <a href="#politica" class="py-2 hover:bg-gray-100">Política de Datos</a>
+      </nav>
+    </div>
   </header>
+
+  <script>
+    // Control del menú móvil
+    const menuBtn = document.getElementById("menuBtn");
+    const mobileMenu = document.getElementById("mobileMenu");
+
+    menuBtn.addEventListener("click", () => {
+      mobileMenu.classList.toggle("hidden");
+    });
+  </script>
+
 
   <!-- Hero -->
   <section id="inicio" class="relative h-[80vh] flex items-center justify-center text-center overflow-hidden">
@@ -427,6 +462,7 @@
   </script>
 </body>
 </html>
+
 
 
 
