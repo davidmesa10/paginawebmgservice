@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Mantenimiento Industrial | MG Service Group SAS</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/feather-icons"></script>
+  <link rel="icon" type="image/jpeg" href="logo-mgservices-group.jpeg"/>
+  <style>
+    html{scroll-behavior:smooth}
+    .titulo-fuerte{font-family:'Anton',sans-serif;letter-spacing:1px}
+
+    /* Banner industrial */
+    .parallax{
+      background-image:url('bannermantenimiento.jpeg'); /* Imagen de fondo */
+      background-attachment:fixed;
+      background-position:center;
+      background-size:cover;
+      height:60vh;
+      position:relative;
+    }
+    .overlay{
+      position:absolute;
+      inset:0;
+      background:rgba(0,0,0,0.5); /* Más clara que la anterior */
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      justify-content:center;
+      text-align:center;
+      color:white;
+    }
+  </style>
+</head>
+<body class="font-sans text-gray-800">
+
+  <!-- Header -->
+  <header class="bg-white shadow-md fixed w-full z-50">
+    <div class="container mx-auto flex justify-between items-center p-4">
+      <a href="index.html#inicio">
+        <img src="logo-mgservices-group.jpeg" alt="MG Service Group SAS" class="h-16">
+      </a>
+      <nav class="hidden md:flex space-x-6 ml-12">
+        <a href="index.html#inicio" class="px-3 py-2 hover:bg-black hover:text-white transition">Inicio</a>
+        <a href="index.html#quienes" class="px-3 py-2 hover:bg-black hover:text-white transition">Quiénes Somos</a>
+        <a href="index.html#servicios" class="px-3 py-2 hover:bg-black hover:text-white transition">Servicios</a>
+        <a href="index.html#proyectos" class="px-3 py-2 hover:bg-black hover:text-white transition">Proyectos</a>
+        <a href="index.html#aliados" class="px-3 py-2 hover:bg-black hover:text-white transition">Aliados</a>
+        <a href="index.html#contacto" class="px-3 py-2 hover:bg-black hover:text-white transition">Contacto</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Banner Parallax -->
+  <section class="parallax">
+    <div class="overlay">
+      <h1 class="text-5xl md:text-6xl titulo-fuerte mb-4 drop-shadow-lg">Mantenimiento Industrial</h1>
+      <p class="text-lg md:text-xl max-w-2xl text-gray-200">
+        Conservamos la integridad de tus estructuras con programas preventivos y correctivos.
+      </p>
+    </div>
+  </section>
+
+  <!-- Sección 1 -->
+  <section class="py-20 bg-gray-50">
+    <div class="container mx-auto px-6 md:px-0 max-w-6xl grid md:grid-cols-2 gap-10 items-center">
+      <div>
+        <h2 class="text-3xl titulo-fuerte mb-4 text-[#0e5a83]">Mantenimiento Preventivo y Correctivo</h2>
+        <p class="text-gray-700 text-lg leading-relaxed">
+          En <strong>MG Service Group SAS</strong> implementamos programas integrales de mantenimiento para cubiertas y estructuras industriales, reduciendo tiempos de parada y alargando su vida útil.
+        </p>
+        <p class="mt-4 text-gray-700 text-lg leading-relaxed">
+          Nuestros servicios incluyen inspección estructural, limpieza técnica, sellado de juntas, reposición de fijaciones y aplicación de tratamientos anticorrosivos.
+        </p>
+      </div>
+      <div>
+        <img src="mantenimientoindustrial.png" alt="Mantenimiento industrial MG" class="rounded-xl shadow-lg w-full">
+      </div>
+    </div>
+  </section>
+
+  <!-- Sección 2 -->
+  <section class="py-20 bg-white">
+    <div class="container mx-auto px-6 md:px-0 max-w-6xl grid md:grid-cols-2 gap-10 items-center">
+      <div class="order-2 md:order-1">
+        <img src="mantenimientos.png" alt="Operarios realizando mantenimiento" class="rounded-xl shadow-lg w-full">
+      </div>
+      <div class="order-1 md:order-2">
+        <h2 class="text-3xl titulo-fuerte mb-4 text-[#0e5a83]">Seguridad, Control y Resultados</h2>
+        <ul class="text-gray-700 text-lg leading-relaxed list-disc pl-5 space-y-2">
+          <li>Diagnóstico técnico detallado con reporte fotográfico y plan de acción.</li>
+          <li>Aplicación de recubrimientos anticorrosivos certificados.</li>
+          <li>Inspección de anclajes, pernos y sistemas de drenaje.</li>
+          <li>Protocolos de seguridad industrial y trabajos en altura.</li>
+          <li>Atención ágil ante emergencias o fallas estructurales.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Call to Action -->
+  <section class="py-16 bg-[#0e5a83] text-white text-center">
+    <h2 class="text-3xl md:text-4xl titulo-fuerte mb-4">Protege tus estructuras con mantenimiento profesional</h2>
+    <p class="text-lg mb-8">Solicita una inspección técnica y asegura la continuidad de tus operaciones.</p>
+    <a href="index.html#contacto" class="bg-black hover:bg-gray-800 text-white px-10 py-3 rounded-lg transition">Contáctanos</a>
+    <br><br>
+    <a href="index.html#servicios" class="text-sm underline hover:text-gray-200">← Volver a Servicios</a>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-black text-white pt-12">
+    <div class="container mx-auto px-6 md:px-0 grid md:grid-cols-4 gap-8 border-b border-gray-700 pb-8">
+      <div class="flex flex-col items-start">
+        <a href="index.html#inicio"><img src="logo-negro.png" alt="MG Service Group SAS" class="h-20 mb-4"></a>
+        <p class="text-sm text-gray-400">© 2025 MG Service Group SAS</p>
+      </div>
+      <div>
+        <h4 class="font-bold mb-4">Navegación</h4>
+        <ul class="space-y-2 text-gray-400">
+          <li><a href="index.html#inicio" class="hover:text-blue-400">Inicio</a></li>
+          <li><a href="index.html#quienes" class="hover:text-blue-400">Quiénes Somos</a></li>
+          <li><a href="index.html#servicios" class="hover:text-blue-400">Servicios</a></li>
+          <li><a href="index.html#proyectos" class="hover:text-blue-400">Proyectos</a></li>
+          <li><a href="index.html#aliados" class="hover:text-blue-400">Aliados</a></li>
+          <li><a href="index.html#contacto" class="hover:text-blue-400">Contacto</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="font-bold mb-4">Contacto</h4>
+        <ul class="space-y-2 text-gray-400">
+          <li>Email: <a href="mailto:mgservicegroupsas@gmail.com" class="hover:text-blue-400">mgservicegroupsas@gmail.com</a></li>
+          <li>Tel: <a href="tel:+573143101649" class="hover:text-blue-400">+57 314 310 1649</a></li>
+          <li>Tel: <a href="tel:+573102264229" class="hover:text-blue-400">+57 310 226 4229</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="font-bold mb-4">Síguenos</h4>
+        <div class="flex space-x-4">
+          <a href="https://www.instagram.com/mgservicegroupsas" target="_blank" class="p-2 bg-gray-800 rounded-full hover:bg-pink-600"><i data-feather="instagram"></i></a>
+          <a href="https://www.facebook.com/share/174gru12zB/" target="_blank" class="p-2 bg-gray-800 rounded-full hover:bg-blue-600"><i data-feather="facebook"></i></a>
+          <a href="https://wa.me/573143101649?text=Hola,%20quiero%20más%20información%20sobre%20sus%20servicios" target="_blank" class="p-2 bg-gray-800 rounded-full hover:bg-green-600"><i data-feather="message-circle"></i></a>
+        </div>
+      </div>
+    </div>
+    <div class="text-center text-gray-500 text-sm mt-6 pb-6">
+      Todos los derechos reservados - MG Service Group SAS
+    </div>
+  </footer>
+
+  <script>feather.replace();</script>
+</body>
+</html>
