@@ -9,54 +9,62 @@
   <script src="https://unpkg.com/feather-icons"></script>
   <link rel="icon" type="image/jpeg" href="logo-mgservices-group.jpeg"/>
   <style>
-    html{scroll-behavior:smooth}
-    .titulo-fuerte{font-family:'Anton',sans-serif;letter-spacing:1px}
-    /* Banner industrial */
-    .parallax{
-      background-image:url('banner diseno y fabricacion.jpeg'); /* ← pon aquí tu imagen industrial */
-      background-attachment:fixed;
-      background-position:center;
-      background-size:cover;
-      height:60vh;
-      position:relative;
-    }
-    .overlay{
-  position:absolute;
-  inset:0;
-  background:linear-gradient(to top, rgba(0,0,0,0.3), rgba(0,0,0,0.05));
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  justify-content:center;
-  text-align:center;
-  color:white;
-}
+    html { scroll-behavior: smooth; }
+    .titulo-fuerte { font-family:'Anton',sans-serif;letter-spacing:1px; }
 
+    /* Banner industrial */
+    .parallax {
+      background-image: url('banner diseno y fabricacion.jpeg');
+      background-attachment: fixed;
+      background-position: center;
+      background-size: cover;
+      height: 60vh;
+      position: relative;
+    }
+    .overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.3), rgba(0,0,0,0.05));
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: white;
     }
   </style>
 </head>
+
 <body class="font-sans text-gray-800">
 
-  <!-- Header -->
-  <header class="bg-white shadow-md fixed w-full z-50">
+  <!-- HEADER -->
+  <header class="bg-white shadow-md fixed w-full z-50 top-0 left-0">
     <div class="container mx-auto flex justify-between items-center p-4">
       <a href="index.html#inicio">
         <img src="logo-mgservices-group.jpeg" alt="MG Service Group SAS" class="h-16">
       </a>
-      <nav class="hidden md:flex space-x-6 ml-12">
-        <a href="index.html#inicio" class="px-3 py-2 hover:bg-black hover:text-white transition">Inicio</a>
-        <a href="index.html#quienes" class="px-3 py-2 hover:bg-black hover:text-white transition">Quiénes Somos</a>
-        <a href="index.html#servicios" class="px-3 py-2 hover:bg-black hover:text-white transition">Servicios</a>
-        <a href="index.html#proyectos" class="px-3 py-2 hover:bg-black hover:text-white transition">Proyectos</a>
-        <a href="index.html#aliados" class="px-3 py-2 hover:bg-black hover:text-white transition">Aliados</a>
-        <a href="index.html#contacto" class="px-3 py-2 hover:bg-black hover:text-white transition">Contacto</a>
+
+      <!-- Botón hamburguesa -->
+      <button id="menu-btn" class="md:hidden text-gray-800 focus:outline-none">
+        <i data-feather="menu" class="w-8 h-8"></i>
+      </button>
+
+      <!-- Menú -->
+      <nav id="menu" class="hidden md:flex space-x-8 ml-12 absolute md:static top-full left-0 w-full md:w-auto bg-white md:bg-transparent shadow-md md:shadow-none opacity-0 md:opacity-100 transform md:translate-y-0 -translate-y-5 transition-all duration-300 ease-in-out">
+        <a href="index.html#inicio" class="block px-4 py-2 hover:bg-black hover:text-white transition">Inicio</a>
+        <a href="index.html#quienes" class="block px-4 py-2 hover:bg-black hover:text-white transition">Quiénes Somos</a>
+        <a href="index.html#servicios" class="block px-4 py-2 hover:bg-black hover:text-white transition">Servicios</a>
+        <a href="index.html#proyectos" class="block px-4 py-2 hover:bg-black hover:text-white transition">Proyectos</a>
+        <a href="index.html#aliados" class="block px-4 py-2 hover:bg-black hover:text-white transition">Aliados</a>
+        <a href="index.html#contacto" class="block px-4 py-2 hover:bg-black hover:text-white transition">Contacto</a>
       </nav>
     </div>
   </header>
 
-  
+  <!-- Espacio para header fijo -->
+  <div class="h-20 md:h-24"></div>
 
-  <!-- Banner Parallax -->
+  <!-- BANNER -->
   <section class="parallax">
     <div class="overlay">
       <h1 class="text-5xl md:text-6xl titulo-fuerte mb-4 drop-shadow-lg">Diseño y Fabricación</h1>
@@ -64,7 +72,7 @@
     </div>
   </section>
 
-  <!-- Sección 1 -->
+  <!-- SECCIÓN 1 -->
   <section class="py-20 bg-gray-50">
     <div class="container mx-auto px-6 md:px-0 max-w-6xl grid md:grid-cols-2 gap-10 items-center">
       <div>
@@ -84,7 +92,7 @@
     </div>
   </section>
 
-  <!-- Sección 2 -->
+  <!-- SECCIÓN 2 -->
   <section class="py-20 bg-white">
     <div class="container mx-auto px-6 md:px-0 max-w-6xl grid md:grid-cols-2 gap-10 items-center">
       <div class="order-2 md:order-1">
@@ -103,7 +111,7 @@
     </div>
   </section>
 
-  <!-- Call to Action -->
+  <!-- CTA -->
   <section class="py-16 bg-[#0e5a83] text-white text-center">
     <h2 class="text-3xl md:text-4xl titulo-fuerte mb-4">¿Listo para construir tu próximo proyecto?</h2>
     <p class="text-lg mb-8">Contáctanos y descubre cómo nuestra experiencia puede impulsar tus resultados.</p>
@@ -112,7 +120,7 @@
     <a href="index.html#servicios" class="text-sm underline hover:text-gray-200">← Volver a Servicios</a>
   </section>
 
-  <!-- Footer -->
+  <!-- FOOTER -->
   <footer class="bg-black text-white pt-12">
     <div class="container mx-auto px-6 md:px-0 grid md:grid-cols-4 gap-8 border-b border-gray-700 pb-8">
       <div class="flex flex-col items-start">
@@ -152,6 +160,75 @@
     </div>
   </footer>
 
-  <script>feather.replace();</script>
+  <!-- SCRIPTS -->
+  <script>
+feather.replace();
+
+// --- Botón hamburguesa ---
+const menuBtn = document.getElementById("menu-btn");
+const menu = document.getElementById("menu");
+
+menuBtn.addEventListener("click", (e) => {
+  e.stopPropagation();
+  menu.classList.toggle("hidden");
+
+  setTimeout(() => {
+    menu.classList.toggle("opacity-100");
+    menu.classList.toggle("translate-y-0");
+    menu.classList.toggle("-translate-y-5");
+  }, 10);
+});
+
+document.addEventListener("click", (e) => {
+  if (!menu.contains(e.target) && !menuBtn.contains(e.target)) {
+    if (!menu.classList.contains("hidden") && window.innerWidth < 768) {
+      menu.classList.add("hidden");
+      menu.classList.remove("opacity-100", "translate-y-0");
+      menu.classList.add("-translate-y-5");
+    }
+  }
+});
+
+// --- Desplazamiento suave idéntico al index, pero con retardo más inteligente ---
+function smoothScrollTo(targetSelector) {
+  const target = document.querySelector(targetSelector);
+  if (!target) return;
+  const headerOffset = 170; // <-- altura del header (ajustable)
+  const elementPosition = target.getBoundingClientRect().top + window.scrollY;
+  const offsetPosition = elementPosition - headerOffset;
+
+  // Desplaza con suavidad
+  window.scrollTo({ top: offsetPosition, behavior: "smooth" });
+}
+
+// --- Detecta clics en enlaces internos o hacia index.html ---
+document.querySelectorAll('a[href^="#"], a[href*="index.html#"]').forEach(link => {
+  link.addEventListener("click", function (e) {
+    const href = this.getAttribute("href");
+    if (href.includes("#")) {
+      const hash = href.split("#")[1];
+      e.preventDefault();
+      if (href.startsWith("index.html")) {
+        // Redirige a index y añade el hash a la URL
+        window.location.href = `index.html#${hash}`;
+      } else {
+        // Scroll dentro de la misma página
+        setTimeout(() => smoothScrollTo(`#${hash}`), 300);
+      }
+    }
+  });
+});
+
+// --- Corrige el scroll al entrar desde otra página ---
+window.addEventListener("load", () => {
+  const hash = window.location.hash;
+  if (hash) {
+    // Espera a que el header se fije completamente
+    setTimeout(() => smoothScrollTo(hash), 800);
+  }
+});
+</script>
+
+
 </body>
 </html>
