@@ -851,6 +851,7 @@
           <input type="hidden" name="_subject" value="Nueva solicitud de cotización — mgservicegroupsas.com" />
           <input type="hidden" name="_captcha" value="false" />
           <input type="hidden" name="_template" value="table" />
+          <input type="hidden" name="_next" value="https://mgservicesas.com/?enviado=1" />
           <input type="hidden" name="_autoresponse" value="Gracias por contactar a MG Service Group SAS. Hemos recibido tu solicitud y te escribiremos en menos de 24 horas. — Equipo MG Service Group" />
           <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off" />
 
@@ -1086,29 +1087,22 @@
     });
   }
 
-  // Contact form → Formsubmit.co (envía correo a mgservicegroupsas@gmail.com)
+  // Contact form → Formsubmit.co (submit nativo del navegador, máxima fiabilidad)
   const form = document.getElementById('contact-form');
   if (form) {
-    form.addEventListener('submit', async (e) => {
-      e.preventDefault();
+    form.addEventListener('submit', () => {
       const status = document.getElementById('form-status');
-      status.textContent = 'Enviando…';
-      const data = new FormData(form);
-      try {
-        const res = await fetch('https://formsubmit.co/ajax/mgservicegroupsas@gmail.com', {
-          method: 'POST',
-          headers: { 'Accept': 'application/json' },
-          body: data
-        });
-        if (!res.ok) throw new Error('Network');
-        const json = await res.json().catch(() => ({}));
-        if (json && json.success === 'false') throw new Error(json.message || 'Send failed');
-        status.textContent = '✓ Gracias. Recibimos tu solicitud; te escribimos en breve.';
-        form.reset();
-      } catch (err) {
-        status.textContent = 'Hubo un problema al enviar. Escríbenos a mgservicegroupsas@gmail.com o por WhatsApp +57 321 234 5678.';
-      }
+      if (status) status.textContent = 'Enviando…';
     });
+  }
+  // Si el usuario regresa con ?enviado=1, mostramos confirmación
+  if (typeof window !== 'undefined' && window.location && window.location.search.indexOf('enviado=1') !== -1) {
+    setTimeout(() => {
+      const status = document.getElementById('form-status');
+      if (status) status.textContent = '✓ Gracias. Recibimos tu solicitud; te escribimos en breve.';
+      const contactSection = document.getElementById('contacto');
+      if (contactSection) contactSection.scrollIntoView({ behavior: 'smooth' });
+    }, 300);
   }
 </script>
 
