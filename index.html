@@ -1,609 +1,1116 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
 <head>
-  <!-- SEO BÁSICO -->
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Instalación de cubiertas metálicas y estructuras en Bogotá | MG Service Group SAS</title>
-  <meta name="description" content="Empresa experta en cubiertas metálicas, estructuras, fachadas y paneles de poliuretano en Bogotá. Calidad garantizada y atención profesional.">
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+<title>MG Service Group SAS — Estructuras metálicas, cubiertas y panel poliuretano en Bogotá</title>
+<meta name="description" content="Diseñamos, fabricamos e instalamos cubiertas, fachadas, estructuras metálicas y panel en poliuretano para proyectos industriales, comerciales y residenciales en Colombia." />
+<meta name="theme-color" content="#0e0d0b" />
+<link rel="icon" href="https://mgservicesas.com/logo-mgservices-group.jpeg" />
 
-  <!-- SEO LOCAL / NEGOCIO -->
-  <meta name="keywords" content="cubiertas metálicas Bogotá, estructuras metálicas, panel de poliuretano, mantenimiento industrial, techos industriales, MG Service Group, cubiertas industriales Colombia">
-  <meta name="author" content="MG Service Group SAS">
-  <meta name="geo.region" content="CO">
-  <meta name="geo.placename" content="Bogotá">
-  <meta name="geo.position" content="4.6011;-74.1370">
-  <meta name="ICBM" content="4.6011, -74.1370">
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
 
-  <!-- OPEN GRAPH PARA REDES SOCIALES -->
-  <meta property="og:title" content="Cubiertas y estructuras metálicas en Bogotá | MG Service Group SAS">
-  <meta property="og:description" content="Instalación de cubiertas, fachadas, estructuras metálicas y paneles termoacústicos. Construimos con calidad y precisión.">
-  <meta property="og:image" content="https://www.mgservicesas.com/logo-mgservices-group.jpeg">
-  <meta property="og:url" content="https://www.mgservicesas.com">
-  <meta property="og:type" content="website">
-
-  <!-- FAVICON -->
-  <link rel="icon" type="image/jpeg" href="logo-mgservices-group.jpeg"/>
-
-  <!-- ESTILOS Y FUENTES -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
-  <script src="https://unpkg.com/feather-icons"></script>
-
-  <!-- DATOS ESTRUCTURADOS JSON-LD -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "LocalBusiness",
-    "name": "MG Service Group SAS",
-    "image": "https://www.mgservicesas.com/logo-mgservices-group.jpeg",
-    "url": "https://www.mgservicesas.com",
-    "telephone": "+573143101649",
-    "address": {
-      "@type": "PostalAddress",
-      "streetAddress": "Cra. 72J #42G-21 Sur",
-      "addressLocality": "Bogotá",
-      "addressCountry": "CO"
-    },
-    "openingHours": "Mo-Fr 08:00-17:00",
-    "description": "Instalación de cubiertas metálicas, estructuras y paneles de poliuretano en Bogotá. Expertos en mantenimiento industrial y techos termoacústicos."
+<!-- Tailwind (CDN) -->
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          ink: '#0e0d0b',
+          ink2: '#1a1816',
+          bone: '#f4ede2',
+          bone2: '#ebe2d3',
+          paper: '#faf6ef',
+          clay: '#c9a27a',
+          brand: '#f88838',
+          brandDeep: '#d86b1e',
+          brandDark: '#9c4a12',
+          steel: '#0878b8',
+          steelDeep: '#065a8a',
+          steelSoft: '#e6f2fa',
+          rust: '#c82838'
+        },
+        fontFamily: {
+          serif: ['Fraunces','ui-serif','Georgia','serif'],
+          sans: ['Inter','ui-sans-serif','system-ui','sans-serif']
+        },
+        letterSpacing: { tightest: '-0.04em', tightish: '-0.02em' }
+      }
+    }
   }
-  </script>
+</script>
 
-  <style>
-    html { scroll-behavior: smooth }
-    .titulo-fuerte { font-family:'Anton',sans-serif; letter-spacing:1px }
-    .input-like { background:#f3f4f6; border-radius:10px; padding:14px 16px; border:2px solid #e5e7eb; outline:none }
-    .input-like:focus { border-color:#2563eb; background:#fff }
-    /* Modal */
-    .modal { display:none; position:fixed; z-index:9999; inset:0; background:rgba(0,0,0,.9) }
-    .modal-content { margin:auto; display:block; max-width:95%; max-height:90%; border-radius:10px }
-    .close { position:absolute; top:20px; right:40px; color:#fff; font-size:40px; font-weight:bold; cursor:pointer }
-    @keyframes slideIn {0%{opacity:0;transform:translateX(-50px)}100%{opacity:1;transform:translateX(0)}}
-    .animate-slide-in { animation:slideIn 1s ease-out forwards }
-    .delay-200 { animation-delay:.2s } .delay-400 { animation-delay:.4s }
-    #toast { position:fixed; right:16px; bottom:16px; background:#111827; color:white; padding:12px 16px; border-radius:10px; display:none; z-index:10000 }
-  </style>
+<!-- GSAP + ScrollTrigger -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+<!-- Lenis smooth scroll -->
+<script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+
+<!-- Swiper -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+<!-- Lucide icons -->
+<script src="https://unpkg.com/lucide@latest"></script>
+
+<style>
+  html, body { background: #f4ede2; color: #0e0d0b; }
+  body { font-family: 'Inter', system-ui, sans-serif; font-feature-settings: 'ss01','cv11'; -webkit-font-smoothing: antialiased; }
+  .serif { font-family: 'Fraunces', Georgia, serif; font-variation-settings: 'opsz' 72; }
+  /* Grain overlay */
+  .grain::after{
+    content:""; position:fixed; inset:0; pointer-events:none; mix-blend-mode:multiply; opacity:.08;
+    background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='300' height='300'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 .6 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>"); z-index: 60;
+  }
+  /* Editorial link underline */
+  .ed-link { position:relative; }
+  .ed-link::after{ content:""; position:absolute; left:0; right:0; bottom:-4px; height:1px; background:currentColor; transform: scaleX(0); transform-origin: right center; transition: transform .5s cubic-bezier(.2,.8,.2,1); }
+  .ed-link:hover::after{ transform: scaleX(1); transform-origin: left center; }
+  /* Ken Burns */
+  @keyframes kenburns { 0%{ transform:scale(1.04) translate3d(0,0,0);} 100%{ transform:scale(1.18) translate3d(-1.5%, -1.5%, 0);} }
+  .kenburns{ animation: kenburns 18s ease-in-out infinite alternate; }
+  /* Progress bar */
+  #progress{ position:fixed; top:0; left:0; height:2px; width:0%; background: linear-gradient(90deg,#f88838,#0878b8); z-index: 90; transition: width .1s linear; }
+  /* Cursor blob */
+  #blob{ position:fixed; width:16px; height:16px; border-radius:999px; background:#0e0d0b; mix-blend-mode: difference; pointer-events:none; z-index:80; transform: translate(-50%,-50%); transition: width .2s ease, height .2s ease, background .2s ease; }
+  #blob.big{ width:72px; height:72px; background:#f88838; }
+  #blob.blue{ width:72px; height:72px; background:#0878b8; }
+  /* Project hover */
+  .proj-card img{ transition: transform 1.2s cubic-bezier(.2,.8,.2,1), filter .6s ease; }
+  .proj-card:hover img{ transform: scale(1.06); filter: saturate(1.05) contrast(1.02); }
+  .proj-card .meta{ transition: transform .6s cubic-bezier(.2,.8,.2,1); }
+  .proj-card:hover .meta{ transform: translateY(-4px); }
+  /* Marquee */
+  @keyframes marq { from { transform: translateX(0);} to { transform: translateX(-50%);} }
+  .marq { animation: marq 45s linear infinite; }
+  .marq-slow { animation: marq 70s linear infinite; }
+  /* Duotone image treatments via blend modes */
+  .duotone-orange{ position:relative; }
+  .duotone-orange::before{ content:""; position:absolute; inset:0; background: linear-gradient(130deg, rgba(248,136,56,.28), rgba(14,13,11,.55)); mix-blend-mode: multiply; pointer-events:none; }
+  .duotone-blue{ position:relative; }
+  .duotone-blue::before{ content:""; position:absolute; inset:0; background: linear-gradient(130deg, rgba(8,120,184,.30), rgba(14,13,11,.60)); mix-blend-mode: multiply; pointer-events:none; }
+  .duotone-ink{ position:relative; }
+  .duotone-ink::before{ content:""; position:absolute; inset:0; background: linear-gradient(180deg, rgba(14,13,11,.15) 0%, rgba(14,13,11,.75) 100%); pointer-events:none; }
+  /* Vignette */
+  .vignette::after{ content:""; position:absolute; inset:0; background: radial-gradient(ellipse at center, transparent 40%, rgba(0,0,0,.55) 100%); pointer-events:none; }
+  /* Scrollytelling media */
+  .scrolly-media{ position: sticky; top: 0; height: 100vh; width: 100%; overflow: hidden; }
+  .scrolly-media video, .scrolly-media img{ width: 100%; height: 100%; object-fit: cover; }
+  /* Text mask reveal */
+  .mask-reveal{ overflow: hidden; display: inline-block; }
+  .mask-reveal > span{ display:inline-block; will-change: transform; }
+  /* Hero layered */
+  .hero-layer{ position:absolute; inset:0; }
+  /* Nav blur */
+  .nav-glass{ background: rgba(244,237,226,.65); backdrop-filter: saturate(1.4) blur(14px); -webkit-backdrop-filter: saturate(1.4) blur(14px); }
+  /* Blue gradient accent */
+  .blue-wash{ background: linear-gradient(135deg, #e6f2fa 0%, #ffffff 50%, #fff4ea 100%); }
+  /* Section number */
+  .sec-num{ font-family: 'Fraunces', serif; font-variation-settings:'opsz' 20; letter-spacing: .2em; font-size: .72rem; color:#6b6256; text-transform: uppercase; }
+  /* Quiet scrollbar */
+  ::-webkit-scrollbar{ width: 10px; } ::-webkit-scrollbar-track{ background: #ebe2d3;} ::-webkit-scrollbar-thumb{ background:#0e0d0b; border-radius: 10px;}
+  /* Brand gradient text */
+  .grad-text{ background: linear-gradient(90deg,#f88838,#0878b8); -webkit-background-clip:text; background-clip:text; color:transparent; }
+  /* Img loading */
+  img{ background:#1a1816; }
+  /* Reduce motion fallback */
+  @media (prefers-reduced-motion: reduce){ .kenburns{ animation:none !important; } }
+</style>
 </head>
-<body class="font-sans text-gray-800">
 
-<!-- Header -->
-<header class="bg-white shadow-md fixed w-full z-50">
-  <div class="container mx-auto flex justify-between items-center p-4">
-    <!-- Logo -->
-    <a href="#inicio">
-      <img src="logo-mgservices-group.jpeg" alt="MG Service Group SAS" class="h-20">
-    </a>
+<body class="grain antialiased overflow-x-hidden">
 
-    <!-- Botón hamburguesa (visible solo en móvil) -->
-    <button id="menu-btn" class="md:hidden text-gray-800 focus:outline-none">
-      <i data-feather="menu" class="w-8 h-8"></i>
-    </button>
+<div id="progress"></div>
+<div id="blob" class="hidden md:block"></div>
 
-    <!-- Navegación -->
-    <nav id="menu" 
-         class="hidden md:flex space-x-8 ml-12 absolute md:static top-full left-0 w-full md:w-auto bg-white md:bg-transparent shadow-md md:shadow-none opacity-0 md:opacity-100 transform md:translate-y-0 -translate-y-5 transition-all duration-300 ease-in-out">
-      <a href="#inicio" class="block px-4 py-2 hover:bg-black hover:text-white transition">Inicio</a>
-      <a href="#quienes" class="block px-4 py-2 hover:bg-black hover:text-white transition">Quiénes Somos</a>
-      <a href="#servicios" class="block px-4 py-2 hover:bg-black hover:text-white transition">Servicios</a>
-      <a href="#proyectos" class="block px-4 py-2 hover:bg-black hover:text-white transition">Proyectos</a>
-      <a href="#aliados" class="block px-4 py-2 hover:bg-black hover:text-white transition">Aliados</a>
-      <a href="#contacto" class="block px-4 py-2 hover:bg-black hover:text-white transition">Contacto</a>
-      <a href="#politica" class="block px-4 py-2 hover:bg-black hover:text-white transition">Política de Datos</a>
-    </nav>
+<!-- NAV -->
+<header class="fixed top-0 inset-x-0 z-50">
+  <div class="nav-glass border-b border-ink/10">
+    <div class="max-w-[1440px] mx-auto px-6 md:px-10 h-20 flex items-center justify-between">
+      <a href="#top" class="flex items-center gap-4 group">
+        <span class="relative inline-flex items-center justify-center">
+          <span class="absolute -inset-1.5 rounded-2xl bg-gradient-to-br from-brand/25 via-transparent to-steel/25 blur-md opacity-80 group-hover:opacity-100 transition-opacity"></span>
+          <span class="relative inline-flex items-center justify-center h-14 w-14 bg-white rounded-xl ring-1 ring-ink/10 shadow-[0_4px_14px_rgba(14,13,11,0.08)] p-1.5">
+            <img src="https://mgservicesas.com/logo-mgservices-group.jpeg" alt="MG Service Group SAS" class="max-h-full max-w-full object-contain" style="background:transparent;" />
+          </span>
+        </span>
+        <span class="flex flex-col leading-tight">
+          <span class="serif text-[19px] tracking-tightish text-ink">MG Service <span class="text-ink/55">Group</span></span>
+          <span class="text-[10px] uppercase tracking-[0.25em] text-ink/55">SAS · Bogotá · desde 2015</span>
+        </span>
+      </a>
+      <nav class="hidden md:flex items-center gap-8 text-sm">
+        <a href="#estudio" class="ed-link">Estudio</a>
+        <a href="#servicios" class="ed-link">Servicios</a>
+        <a href="#proyectos" class="ed-link">Proyectos</a>
+        <a href="#manifiesto" class="ed-link">Proceso</a>
+        <a href="#contacto" class="ed-link">Contacto</a>
+      </nav>
+      <a href="#contacto" class="hidden md:inline-flex items-center gap-2 rounded-full bg-ink text-bone px-4 py-2 text-sm hover:bg-brand transition-colors">
+        Cotizar <span>→</span>
+      </a>
+      <button id="menu-btn" class="md:hidden text-ink" aria-label="Menú">
+        <i data-lucide="menu"></i>
+      </button>
+    </div>
+  </div>
+  <!-- Mobile drawer -->
+  <div id="menu" class="hidden md:hidden bg-bone border-b border-ink/10">
+    <div class="px-6 py-6 flex flex-col gap-4 text-lg">
+      <a href="#estudio">Estudio</a>
+      <a href="#servicios">Servicios</a>
+      <a href="#proyectos">Proyectos</a>
+      <a href="#manifiesto">Proceso</a>
+      <a href="#contacto">Contacto</a>
+      <a href="#contacto" class="rounded-full bg-ink text-bone px-5 py-3 text-center">Cotizar →</a>
+    </div>
   </div>
 </header>
 
-<!-- Script del menú -->
-<script>
-  const menuBtn = document.getElementById("menu-btn");
-  const menu = document.getElementById("menu");
+<!-- HERO -->
+<section id="top" class="relative h-[100svh] min-h-[720px] overflow-hidden bg-ink text-bone">
+  <!-- Layered media: video (best), image fallback, real photo backdrop -->
+  <div class="hero-layer">
+    <!-- Hero video with robust image fallback -->
+    <video
+      id="hero-video"
+      class="absolute inset-0 w-full h-full object-cover opacity-90"
+      autoplay muted loop playsinline preload="metadata"
+      poster="https://mgservicesas.com/metalica.png">
+      <source src="https://videos.pexels.com/video-files/855592/855592-hd_1920_1080_25fps.mp4" type="video/mp4" />
+    </video>
+    <img id="hero-fallback" src="https://mgservicesas.com/metalica.png" alt="Estructura metálica MG Service" class="absolute inset-0 w-full h-full object-cover kenburns hidden" />
+  </div>
+  <!-- Cinematic overlays (duotone blue+orange) -->
+  <div class="hero-layer pointer-events-none" style="background: linear-gradient(120deg, rgba(8,120,184,.32) 0%, rgba(14,13,11,.65) 45%, rgba(248,136,56,.25) 100%); mix-blend-mode: multiply;"></div>
+  <div class="hero-layer pointer-events-none" style="background: radial-gradient(ellipse at 30% 70%, rgba(0,0,0,0) 0%, rgba(0,0,0,.75) 100%);"></div>
 
-  menuBtn.addEventListener("click", (e) => {
-    e.stopPropagation();
-    menu.classList.toggle("hidden");
+  <!-- Top marquee ticker -->
+  <div class="absolute top-16 inset-x-0 z-10 overflow-hidden py-3 border-y border-bone/10 bg-ink/30 backdrop-blur-sm">
+    <div class="flex gap-12 whitespace-nowrap marq text-bone/70 text-xs uppercase tracking-[0.2em]">
+      <span>Estructuras metálicas</span><span>•</span>
+      <span>Cubiertas térmicas</span><span>•</span>
+      <span>Panel en poliuretano</span><span>•</span>
+      <span>Mantenimiento industrial</span><span>•</span>
+      <span>Bogotá · Colombia</span><span>•</span>
+      <span>Desde 2015</span><span>•</span>
+      <span>Estructuras metálicas</span><span>•</span>
+      <span>Cubiertas térmicas</span><span>•</span>
+      <span>Panel en poliuretano</span><span>•</span>
+      <span>Mantenimiento industrial</span><span>•</span>
+      <span>Bogotá · Colombia</span><span>•</span>
+      <span>Desde 2015</span><span>•</span>
+    </div>
+  </div>
 
-    // Animación de aparición
-    setTimeout(() => {
-      menu.classList.toggle("opacity-100");
-      menu.classList.toggle("translate-y-0");
-      menu.classList.toggle("-translate-y-5");
-    }, 10);
-  });
-
-  // Cerrar al hacer clic en un enlace
-  menu.querySelectorAll("a").forEach(link => {
-    link.addEventListener("click", () => {
-      if (window.innerWidth < 768) {
-        menu.classList.add("hidden");
-        menu.classList.remove("opacity-100", "translate-y-0");
-        menu.classList.add("-translate-y-5");
-      }
-    });
-  });
-
-  // Cerrar al hacer clic fuera
-  document.addEventListener("click", (e) => {
-    if (!menu.contains(e.target) && !menuBtn.contains(e.target)) {
-      if (!menu.classList.contains("hidden") && window.innerWidth < 768) {
-        menu.classList.add("hidden");
-        menu.classList.remove("opacity-100", "translate-y-0");
-        menu.classList.add("-translate-y-5");
-      }
-    }
-  });
-</script>
-
-
-      <!-- Menú principal -->
-      <nav id="menuNav" class="hidden md:flex space-x-8 ml-12">
-        <a href="#inicio" class="px-4 py-2 hover:bg-black hover:text-white transition">Inicio</a>
-        <a href="#quienes" class="px-4 py-2 hover:bg-black hover:text-white transition">Quiénes Somos</a>
-        <a href="#servicios" class="px-4 py-2 hover:bg-black hover:text-white transition">Servicios</a>
-        <a href="#proyectos" class="px-4 py-2 hover:bg-black hover:text-white transition">Proyectos</a>
-        <a href="#aliados" class="px-4 py-2 hover:bg-black hover:text-white transition">Aliados</a>
-        <a href="#contacto" class="px-4 py-2 hover:bg-black hover:text-white transition">Contacto</a>
-        <a href="#politica" class="px-4 py-2 hover:bg-black hover:text-white transition">Política de Datos</a>
-      </nav>
+  <!-- Content -->
+  <div class="relative z-10 h-full max-w-[1440px] mx-auto px-6 md:px-10 pt-24 md:pt-28 pb-10 flex flex-col justify-between">
+    <div class="flex items-start justify-between pt-8">
+      <p class="text-xs tracking-[0.3em] uppercase text-bone/70">MG · Est. 2015 · Bogotá</p>
+      <p class="hidden md:block text-xs tracking-[0.25em] uppercase text-bone/70 text-right max-w-xs">Diseño · Fabricación · Instalación · Mantenimiento</p>
     </div>
 
-    <!-- Menú desplegable móvil -->
-    <div id="mobileMenu" class="hidden md:hidden bg-white shadow-lg border-t border-gray-200">
-      <nav class="flex flex-col p-4 space-y-2 text-center">
-        <a href="#inicio" class="py-2 hover:bg-gray-100">Inicio</a>
-        <a href="#quienes" class="py-2 hover:bg-gray-100">Quiénes Somos</a>
-        <a href="#servicios" class="py-2 hover:bg-gray-100">Servicios</a>
-        <a href="#proyectos" class="py-2 hover:bg-gray-100">Proyectos</a>
-        <a href="#aliados" class="py-2 hover:bg-gray-100">Aliados</a>
-        <a href="#contacto" class="py-2 hover:bg-gray-100">Contacto</a>
-        <a href="#politica" class="py-2 hover:bg-gray-100">Política de Datos</a>
-      </nav>
-    </div>
-  </header>
-
-  <script>
-    // Control del menú móvil
-    const menuBtn = document.getElementById("menuBtn");
-    const mobileMenu = document.getElementById("mobileMenu");
-
-    menuBtn.addEventListener("click", () => {
-      mobileMenu.classList.toggle("hidden");
-    });
-  </script>
-
-
-  <!-- Hero -->
-  <section id="inicio" class="relative h-[80vh] flex items-center justify-center text-center overflow-hidden">
-    <img src="metalica.png" alt="Estructuras metálicas" class="absolute inset-0 w-full h-full object-cover object-center bg-fixed">
-    <div class="absolute inset-0 bg-black/50"></div>
-    <div class="relative z-10 p-6">
-      <h1 class="text-4xl md:text-6xl font-bold text-white mb-4">Construimos el futuro contigo</h1>
-      <p class="text-lg md:text-2xl text-gray-200 mb-6">Estructuras seguras, eficientes y de alta calidad</p>
-      <a href="#contacto" class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg">Contáctanos</a>
-    </div>
-  </section>
-
-  <!-- Quiénes Somos -->
-  <section id="quienes" class="py-20 bg-[#e0f2fe]">
-    <div class="container mx-auto grid md:grid-cols-2 gap-8 px-6 md:px-0 items-center">
-      <div><h2 class="text-5xl font-bold titulo-fuerte text-black">Quiénes Somos</h2></div>
-      <div class="text-gray-800 font-semibold text-lg space-y-6">
-        <p>Somos una empresa especializada en diseño e instalación de cubiertas, fachadas, revestimientos, estructuras metálicas, instalación de panel en poliuretano y sistemas de enfriamiento para proyectos industriales, comerciales y residenciales.</p>
-        <p>Combinamos tecnología, experiencia técnica y soluciones estéticas para garantizar estructuras seguras, eficientes y de alta calidad.</p>
+    <div class="max-w-5xl">
+      <div class="flex items-center gap-3 mb-6">
+        <span class="h-px w-10 bg-brand"></span>
+        <span class="text-xs tracking-[0.3em] uppercase text-brand">Portada · 01</span>
+        <span class="h-px w-6 bg-steel"></span>
+        <span class="text-xs tracking-[0.3em] uppercase text-steel">Construimos</span>
       </div>
-    </div>
-  </section>
-
-  <!-- Servicios -->
-<section id="servicios" class="py-16">
-  <div class="container mx-auto px-6 md:px-0">
-    <h2 class="text-3xl text-center mb-12 titulo-fuerte">Nuestros Servicios</h2>
-    <div class="grid md:grid-cols-3 gap-12 text-center">
-      
-     <!-- Diseño y Fabricación -->
-<a href="disenoyfabricacion.html" class="relative group bg-white shadow-lg rounded-xl overflow-hidden block">
-  <img src="diseño.png" alt="Diseño y Fabricación" 
-       class="w-full h-64 object-contain p-6 transition-transform duration-300 group-hover:scale-105">
-  <div class="p-4">
-    <h3 class="text-xl font-bold mb-2">Diseño y Fabricación</h3>
-    <p class="text-gray-600">Estructuras metálicas personalizadas y resistentes.</p>
-  </div>
-  <!-- Overlay -->
-  <div class="absolute inset-0 bg-black bg-opacity-90 text-white p-6 flex flex-col justify-center items-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-    <h4 class="text-lg font-bold mb-3">Más Información</h4>
-    <p class="text-sm leading-relaxed text-center">
-      Fabricamos estructuras metálicas a la medida: livianas, pesadas o industriales, con soldadura certificada y control dimensional riguroso.
-    </p>
-  </div>
-</a>
-
-<!-- Mantenimiento Industrial -->
-<a href="mantenimiento-industrial.html" class="relative group bg-white shadow-lg rounded-xl overflow-hidden block">
-  <img src="mantenimiento.png" alt="Mantenimiento Industrial" 
-       class="w-full h-64 object-contain p-6 transition-transform duration-300 group-hover:scale-105">
-  <div class="p-4">
-    <h3 class="text-xl font-bold mb-2">Mantenimiento Industrial</h3>
-    <p class="text-gray-600">Prevenir daños y alargar la vida útil.</p>
-  </div>
-  <!-- Overlay -->
-  <div class="absolute inset-0 bg-black bg-opacity-90 text-white p-6 flex flex-col justify-center items-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-    <h4 class="text-lg font-bold mb-3">Más Información</h4>
-    <p class="text-sm leading-relaxed text-center">
-      Programas preventivos y correctivos para cubiertas y estructuras. Menos paradas, más seguridad y durabilidad.
-    </p>
-  </div>
-</a>
-
-<!-- Panel en Poliuretano -->
-<a href="panel-poliuretano.html" class="relative group bg-white shadow-lg rounded-xl overflow-hidden block">
-  <img src="panel.png" alt="Panel en Poliuretano" 
-       class="w-full h-64 object-contain p-6 transition-transform duration-300 group-hover:scale-105">
-  <div class="p-4">
-    <h3 class="text-xl font-bold mb-2">Panel en Poliuretano</h3>
-    <p class="text-gray-600">Eficiencia y aislamiento de alto nivel.</p>
-  </div>
-  <!-- Overlay -->
-  <div class="absolute inset-0 bg-black bg-opacity-90 text-white p-6 flex flex-col justify-center items-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-    <h4 class="text-lg font-bold mb-3">Más Información</h4>
-    <p class="text-sm leading-relaxed text-center">
-      Paneles tipo sándwich con aislamiento térmico superior. Perfectos para cámaras frías, techos y fachadas industriales.
-    </p>
-  </div>
-</a>
-
-</div> <!-- cierre de grid -->
-</div> <!-- cierre de container -->
-</section> <!-- cierre correcto de Servicios -->
-
-
-  <!-- Proyectos -->
-  <section id="proyectos" class="py-16 bg-gray-50">
-    <div class="container mx-auto px-6 md:px-0">
-      <h2 class="text-3xl text-center mb-12 titulo-fuerte">La Calidad en Cada Detalle</h2>
-
-      <!-- Carrusel -->
-      <div class="relative w-full max-w-6xl mx-auto overflow-hidden rounded-lg shadow-lg">
-        <div id="carousel" class="flex transition-transform duration-700 ease-in-out">
-          
-          <!-- Slide 1 -->
-          <div class="grid md:grid-cols-3 gap-6 flex-shrink-0 w-full px-4">
-            <div><img src="proyecto1.jpeg" class="w-full h-64 object-cover rounded-lg cursor-pointer" onclick="openLightbox(this.src)"></div>
-            <div><img src="proyecto2.jpeg" class="w-full h-64 object-cover rounded-lg cursor-pointer" onclick="openLightbox(this.src)"></div>
-            <div><img src="proyecto3.png"  class="w-full h-64 object-cover rounded-lg cursor-pointer" onclick="openLightbox(this.src)"></div>
-          </div>
-
-          <!-- Slide 2 -->
-          <div class="grid md:grid-cols-3 gap-6 flex-shrink-0 w-full px-4">
-            <div><img src="cubiertateja.jpeg" class="w-full h-64 object-cover rounded-lg cursor-pointer" onclick="openLightbox(this.src)"></div>
-            <div><img src="cubiertateja2.jpeg" class="w-full h-64 object-cover rounded-lg cursor-pointer" onclick="openLightbox(this.src)"></div>
-            <div><img src="cubiertateja3.jpeg" class="w-full h-64 object-cover rounded-lg cursor-pointer" onclick="openLightbox(this.src)"></div>
-          </div>
-
-          <!-- Slide 3 -->
-          <div class="grid md:grid-cols-3 gap-6 flex-shrink-0 w-full px-4">
-            <div><img src="cubiertateja4.jpeg" class="w-full h-64 object-cover rounded-lg cursor-pointer" onclick="openLightbox(this.src)"></div>
-            <div><img src="cubiertateja5.jpeg" class="w-full h-64 object-cover rounded-lg cursor-pointer" onclick="openLightbox(this.src)"></div>
-            <div><img src="cubiertateja6.jpeg" class="w-full h-64 object-cover rounded-lg cursor-pointer" onclick="openLightbox(this.src)"></div>
-          </div>
-        </div>
-
-        <!-- Botones de navegación -->
-        <button onclick="prevSlide()" class="absolute top-1/2 left-4 -translate-y-1/2 bg-black/50 text-white p-3 rounded-full hover:bg-black">
-          &#10094;
-        </button>
-        <button onclick="nextSlide()" class="absolute top-1/2 right-4 -translate-y-1/2 bg-black/50 text-white p-3 rounded-full hover:bg-black">
-          &#10095;
-        </button>
-      </div>
-    </div>
-  </section>
-
-  <!-- Lightbox -->
-  <div id="lightbox" class="fixed inset-0 bg-black bg-opacity-90 hidden items-center justify-center z-50">
-    <span class="absolute top-6 right-10 text-white text-4xl cursor-pointer select-none" onclick="closeLightbox()">&times;</span>
-    <img id="lightboxImg" src="" alt="Imagen ampliada" 
-         class="max-w-5xl max-h-[90%] rounded-lg transform scale-75 opacity-0 transition-all duration-500 ease-in-out cursor-pointer"/>
-  </div>
-
-  <!-- Scripts -->
-  <script>
-    const carousel = document.getElementById("carousel");
-    const slides = carousel.children;
-    let index = 0;
-    let autoPlay;
-
-    function showSlide(i) {
-      index = (i + slides.length) % slides.length;
-      carousel.style.transform = `translateX(-${index * 100}%)`;
-    }
-
-    function nextSlide() {
-      showSlide(index + 1);
-      resetAutoPlay();
-    }
-
-    function prevSlide() {
-      showSlide(index - 1);
-      resetAutoPlay();
-    }
-
-    function startAutoPlay() {
-      autoPlay = setInterval(() => {
-        nextSlide();
-      }, 4000);
-    }
-
-    function resetAutoPlay() {
-      clearInterval(autoPlay);
-      startAutoPlay();
-    }
-
-    startAutoPlay();
-
-    // Lightbox
-    const lightbox = document.getElementById("lightbox");
-    const lightboxImg = document.getElementById("lightboxImg");
-
-    function openLightbox(src) {
-      lightbox.classList.remove("hidden");
-      lightbox.classList.add("flex");
-      lightboxImg.src = src;
-      setTimeout(() => {
-        lightboxImg.classList.remove("scale-75", "opacity-0");
-        lightboxImg.classList.add("scale-100", "opacity-100");
-      }, 50);
-    }
-
-    function closeLightbox() {
-      lightboxImg.classList.remove("scale-100", "opacity-100");
-      lightboxImg.classList.add("scale-75", "opacity-0");
-      setTimeout(() => {
-        lightbox.classList.add("hidden");
-        lightbox.classList.remove("flex");
-      }, 500);
-    }
-
-    lightbox.addEventListener("click", (e) => {
-      if (e.target === lightbox || e.target === lightboxImg) {
-        closeLightbox();
-      }
-    });
-  </script>
-
-
-
-  <!-- Modal -->
-  <div id="imageModal" class="modal">
-    <span class="close" onclick="closeModal()">&times;</span>
-    <img class="modal-content" id="modalImg" alt="">
-  </div>
-
-  <!-- Aliados -->
-  <section id="aliados" class="py-16 bg-white">
-    <div class="container mx-auto px-6 md:px-0 text-center">
-      <h2 class="text-3xl mb-12 titulo-fuerte">Grandes Aliados</h2>
-      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8 items-center">
-        <img src="logo-metecno.png" alt="Metecno"  class="mx-auto h-20 object-contain hover:scale-105 transition">
-        <img src="arkos logo.png" alt="Arkos"     class="mx-auto h-20 object-contain hover:scale-105 transition">
-        <img src="agofer logo.png" alt="Agofer"   class="mx-auto h-20 object-contain hover:scale-105 transition">
-        <img src="cubricol logo.png" alt="Cubricol" class="mx-auto h-20 object-contain hover:scale-105 transition">
-        <img src="sika logo.png" alt="Sika"       class="mx-auto h-20 object-contain hover:scale-105 transition">
-      </div>
-    </div>
-  </section>
-
-  <!-- Mapa -->
-  <section id="mapa" class="py-10">
-    <div class="container mx-auto text-center px-6 md:px-0">
-      <h3 class="text-3xl titulo-fuerte mb-6">Nuestra Ubicación</h3>
-      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3976.7996820862633!2d-74.13708322601146!3d4.601168542468568!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e3f9f49db1585db%3A0xe50ad6b8dcf9bc01!2sCra.%2072j%20%2342g-21%20Sur%2C%20Bogot%C3%A1!5e0!3m2!1ses!2sco!4v1700000000000!5m2!1ses!2sco"
-              width="100%" height="400" style="border:0;" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-    </div>
-  </section>
-
-  <!-- Contacto -->
-  <section id="contacto" class="pt-12">
-    <div class="container mx-auto px-6 md:px-0 text-center">
-      <h2 class="titulo-fuerte text-4xl md:text-5xl">Su nuevo proyecto comienza aquí</h2>
-      <p class="mt-3 text-lg">¡Permítanos ayudarle con su proyecto y contáctenos hoy mismo!</p>
-    </div>
-    <div class="mt-8 bg-[#0e5a83] py-10">
-      <div class="container mx-auto px-6 md:px-16">
-        <form id="contactForm" class="space-y-4">
-          <div class="grid md:grid-cols-2 gap-4">
-            <input class="input-like" type="text" name="Nombre" placeholder="Nombre*" required>
-            <input class="input-like" type="text" name="Apellido" placeholder="Apellido*">
-          </div>
-          <div class="grid md:grid-cols-2 gap-4">
-            <input class="input-like" type="email" name="Email" placeholder="Correo electrónico*" required>
-            <input class="input-like" type="tel" name="Telefono" placeholder="Teléfono*">
-          </div>
-          <textarea class="input-like w-full" name="Mensaje" rows="5" placeholder="Mensaje*" required></textarea>
-
-          <label class="flex items-start gap-3 text-sm text-white/90">
-            <input type="checkbox" id="consent" required class="mt-1">
-            <span>Acepto el tratamiento de mis datos personales de acuerdo con la 
-              <a href="#politica" class="underline">Política de Privacidad</a>.
-            </span>
-          </label>
-
-          <div class="text-center">
-            <button id="submitBtn" type="submit" class="bg-black text-white px-10 py-3 rounded-lg hover:opacity-90 transition">Enviar</button>
-          </div>
-        </form>
-      </div>
-    </div>
-  </section>
-
- <!-- Footer -->
-<footer class="bg-black text-white pt-12">
-  <div class="container mx-auto px-6 md:px-0 grid md:grid-cols-4 gap-8 border-b border-gray-700 pb-8">
-    <div class="flex flex-col items-start">
-      <a href="#inicio"><img src="logo-negro.png" alt="MG Service Group SAS" class="h-20 mb-4"></a>
-      <p class="text-sm text-gray-400">© 2025 MG Service Group SAS</p>
-    </div>
-    <div>
-      <h4 class="font-bold mb-4">Navegación</h4>
-      <ul class="space-y-2 text-gray-400">
-        <li><a href="#inicio" class="hover:text-blue-400">Inicio</a></li>
-        <li><a href="#quienes" class="hover:text-blue-400">Quiénes Somos</a></li>
-        <li><a href="#servicios" class="hover:text-blue-400">Servicios</a></li>
-        <li><a href="#proyectos" class="hover:text-blue-400">Proyectos</a></li>
-        <li><a href="#aliados" class="hover:text-blue-400">Aliados</a></li>
-        <li><a href="#contacto" class="hover:text-blue-400">Contacto</a></li>
-      </ul>
-    </div>
-    <div>
-      <h4 class="font-bold mb-4">Contacto</h4>
-      <ul class="space-y-2 text-gray-400">
-        <li>Email: <a href="mailto:mgservicegroupsas@gmail.com" class="hover:text-blue-400">mgservicegroupsas@gmail.com</a></li>
-        <li>Tel 1: <a href="tel:+573143101649" class="hover:text-blue-400">+57 314 310 1649</a></li>
-        <li>Tel 2: <a href="tel:+573102264229" class="hover:text-blue-400">+57 310 226 4229</a></li>
-      </ul>
-    </div>
-    <div>
-      <h4 class="font-bold mb-4">Síguenos</h4>
-      <div class="flex space-x-4">
-        <a href="https://www.instagram.com/mgservicegroupsas" target="_blank" class="p-2 bg-gray-800 rounded-full hover:bg-pink-600"><i data-feather="instagram"></i></a>
-        <a href="https://www.facebook.com/share/174gru12zB/" target="_blank" class="p-2 bg-gray-800 rounded-full hover:bg-blue-600"><i data-feather="facebook"></i></a>
-        <!-- WhatsApp corregido -->
-        <a href="https://wa.me/573143101649?text=Hola,%20quiero%20más%20información%20sobre%20sus%20servicios" 
-           target="_blank" 
-           class="p-2 bg-gray-800 rounded-full hover:bg-green-600">
-          <i data-feather="message-circle"></i>
+      <h1 class="serif font-light tracking-tightest leading-[0.95]" style="font-size: clamp(3rem, 8vw, 8.5rem);">
+        <span class="mask-reveal"><span>Construimos</span></span><br/>
+        <span class="mask-reveal"><span>el <em class="italic font-extralight grad-text">futuro</em> contigo.</span></span>
+      </h1>
+      <p class="mt-8 max-w-xl text-bone/85 text-base md:text-lg leading-relaxed">
+        Más de una década diseñando, fabricando e instalando obras metálicas que levantan industria en Colombia. Precisión artesanal, ingeniería verificada, puntualidad como regla.
+      </p>
+      <div class="mt-10 flex flex-wrap items-center gap-4">
+        <a href="#servicios" class="inline-flex items-center gap-3 rounded-full bg-bone text-ink px-6 py-3 text-sm hover:bg-brand hover:text-bone transition-colors">
+          Ver nuestro oficio <i data-lucide="arrow-down-right" class="w-4 h-4"></i>
+        </a>
+        <a href="#contacto" class="inline-flex items-center gap-3 rounded-full border border-bone/40 text-bone px-6 py-3 text-sm hover:bg-steel hover:border-steel transition-colors">
+          Cotizar un proyecto
         </a>
       </div>
     </div>
+
+    <!-- Hero footer stats -->
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-10 border-t border-bone/15 pt-6">
+      <div>
+        <div class="serif text-3xl md:text-5xl tracking-tightish">+10</div>
+        <div class="text-xs uppercase tracking-[0.2em] text-bone/60 mt-1">Años construyendo</div>
+      </div>
+      <div>
+        <div class="serif text-3xl md:text-5xl tracking-tightish text-brand">+250</div>
+        <div class="text-xs uppercase tracking-[0.2em] text-bone/60 mt-1">Proyectos entregados</div>
+      </div>
+      <div>
+        <div class="serif text-3xl md:text-5xl tracking-tightish text-steel">100%</div>
+        <div class="text-xs uppercase tracking-[0.2em] text-bone/60 mt-1">Cumplimiento en tiempos</div>
+      </div>
+      <div>
+        <div class="serif text-3xl md:text-5xl tracking-tightish">24/7</div>
+        <div class="text-xs uppercase tracking-[0.2em] text-bone/60 mt-1">Atención técnica</div>
+      </div>
+    </div>
   </div>
-  <div class="text-center text-gray-500 text-sm mt-6 pb-6">
-    Todos los derechos reservados - MG Service Group SAS
+
+  <!-- Scroll hint -->
+  <div class="absolute bottom-6 left-1/2 -translate-x-1/2 text-bone/70 text-[11px] tracking-[0.3em] uppercase flex flex-col items-center gap-2">
+    <span>Desliza</span>
+    <span class="h-10 w-px bg-gradient-to-b from-brand to-transparent"></span>
+  </div>
+</section>
+
+<!-- MARQUEE STRIP -->
+<section class="bg-ink text-bone py-6 overflow-hidden border-y border-bone/10">
+  <div class="flex gap-16 whitespace-nowrap marq-slow serif text-3xl md:text-5xl tracking-tightest">
+    <span>Cubiertas</span><span class="text-brand">◆</span>
+    <span class="italic">Estructura</span><span class="text-steel">◆</span>
+    <span>Panel poliuretano</span><span class="text-brand">◆</span>
+    <span class="italic">Mantenimiento</span><span class="text-steel">◆</span>
+    <span>Fachadas</span><span class="text-brand">◆</span>
+    <span class="italic">Ingeniería</span><span class="text-steel">◆</span>
+    <span>Cubiertas</span><span class="text-brand">◆</span>
+    <span class="italic">Estructura</span><span class="text-steel">◆</span>
+    <span>Panel poliuretano</span><span class="text-brand">◆</span>
+    <span class="italic">Mantenimiento</span><span class="text-steel">◆</span>
+    <span>Fachadas</span><span class="text-brand">◆</span>
+    <span class="italic">Ingeniería</span><span class="text-steel">◆</span>
+  </div>
+</section>
+
+<!-- ESTUDIO (01) -->
+<section id="estudio" class="relative bg-bone text-ink">
+  <div class="max-w-[1440px] mx-auto px-6 md:px-10 py-24 md:py-40">
+    <div class="grid grid-cols-12 gap-8 md:gap-14">
+      <aside class="col-span-12 md:col-span-3">
+        <p class="sec-num">01 — Estudio</p>
+        <div class="mt-3 flex items-center gap-3">
+          <span class="h-px w-10 bg-ink"></span>
+          <span class="h-px w-4 bg-steel"></span>
+          <span class="h-px w-2 bg-brand"></span>
+        </div>
+      </aside>
+      <div class="col-span-12 md:col-span-9">
+        <h2 class="serif tracking-tightest leading-[0.98]" style="font-size: clamp(2.25rem, 5.5vw, 5rem);">
+          Ingeniería, fabricación y montaje metálico <em class="italic font-extralight text-ink/70">al servicio de la industria colombiana</em>.
+        </h2>
+        <div class="mt-10 grid md:grid-cols-2 gap-10 md:gap-16 text-ink/75 leading-relaxed">
+          <p>
+            MG Service Group SAS es una compañía colombiana especializada en el diseño, fabricación, instalación y mantenimiento de estructuras metálicas, cubiertas, fachadas y sistemas de panel en poliuretano para los sectores industrial, comercial e institucional.
+          </p>
+          <p>
+            Operamos con estándares técnicos certificados, soldadura calificada bajo AWS D1.1 y un equipo integrado de ingeniería, taller y montaje que garantiza trazabilidad, cumplimiento en tiempos y calidad verificable en cada obra entregada.
+          </p>
+        </div>
+
+        <!-- Ticker numbers -->
+        <div class="mt-16 grid grid-cols-2 md:grid-cols-4 gap-10 border-t border-ink/15 pt-10">
+          <div>
+            <div class="serif text-5xl md:text-6xl tracking-tightest">2015</div>
+            <div class="mt-2 text-xs uppercase tracking-[0.22em] text-ink/60">Año de fundación</div>
+          </div>
+          <div>
+            <div class="serif text-5xl md:text-6xl tracking-tightest text-brand">4</div>
+            <div class="mt-2 text-xs uppercase tracking-[0.22em] text-ink/60">Líneas de servicio</div>
+          </div>
+          <div>
+            <div class="serif text-5xl md:text-6xl tracking-tightest text-steel">RETIE</div>
+            <div class="mt-2 text-xs uppercase tracking-[0.22em] text-ink/60">Normas técnicas vigentes</div>
+          </div>
+          <div>
+            <div class="serif text-5xl md:text-6xl tracking-tightest italic">∞</div>
+            <div class="mt-2 text-xs uppercase tracking-[0.22em] text-ink/60">Respaldo post-venta</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICIOS (02) - Scrollytelling con 3 filas, cada una con backdrop propio -->
+<section id="servicios" class="relative bg-ink text-bone">
+  <!-- Header -->
+  <div class="max-w-[1440px] mx-auto px-6 md:px-10 pt-24 md:pt-32">
+    <div class="flex items-end justify-between gap-6 flex-wrap">
+      <div>
+        <p class="sec-num text-bone/60">02 — Servicios</p>
+        <h2 class="mt-3 serif tracking-tightest leading-[0.98]" style="font-size: clamp(2.25rem, 5.5vw, 5rem);">
+          Cuatro líneas, <em class="italic font-extralight text-bone/70">un solo oficio</em>.
+        </h2>
+      </div>
+      <p class="max-w-md text-bone/70">
+        Pensamos cada proyecto como un sistema: cubierta, estructura, cerramiento, operación. Diseñamos para que nada compita entre sí.
+      </p>
+    </div>
+  </div>
+
+  <!-- Fila 01 · DISEÑO Y FABRICACIÓN DE ESTRUCTURAS -->
+  <article class="relative mt-20 border-t border-bone/10">
+    <div class="grid grid-cols-12">
+      <!-- Media sticky con parallax -->
+      <div class="col-span-12 md:col-span-7 relative min-h-[70vh] md:min-h-[90vh] overflow-hidden duotone-blue vignette">
+        <img data-parallax="0.12" src="https://images.pexels.com/photos/2760343/pexels-photo-2760343.jpeg?auto=compress&cs=tinysrgb&w=1600"
+             onerror="this.onerror=null;this.src='https://mgservicesas.com/disenoyfabricaciondeestructurasmetalicas.png';"
+             alt="Diseño y fabricación de estructuras metálicas con soldadura calificada"
+             class="absolute inset-0 w-[110%] h-[110%] object-cover kenburns" />
+        <!-- Overlaid diagram marks -->
+        <div class="absolute top-6 left-6 md:top-10 md:left-10 text-bone/90 text-[11px] tracking-[0.3em] uppercase">
+          <span class="inline-block px-3 py-1 bg-steel/90 text-bone">01 / 04 · Fabricación</span>
+        </div>
+        <div class="absolute bottom-6 right-6 text-bone/90 text-[11px] tracking-[0.25em] uppercase">
+          Bogotá · Taller propio
+        </div>
+      </div>
+      <!-- Texto -->
+      <div class="col-span-12 md:col-span-5 bg-ink2 px-6 md:px-12 py-14 md:py-24 flex flex-col justify-center">
+        <div class="flex items-center gap-3 mb-8">
+          <span class="h-px w-10 bg-steel"></span>
+          <span class="text-[11px] tracking-[0.3em] uppercase text-steel">Diseño · Fabricación · Montaje</span>
+        </div>
+        <h3 class="serif tracking-tightest leading-[1] text-bone" style="font-size: clamp(2rem, 3.6vw, 3.5rem);">
+          Diseño y fabricación de estructuras metálicas.
+        </h3>
+        <p class="mt-6 text-bone/75 leading-relaxed">
+          Desde vigas IPE hasta cerchas de gran luz: cálculo, corte, ensamble y pintura electrostática. Cada elemento sale del taller con ficha técnica y trazabilidad.
+        </p>
+        <ul class="mt-8 space-y-3 text-bone/80 text-sm">
+          <li class="flex items-start gap-3"><i data-lucide="square-check" class="w-4 h-4 mt-1 text-brand"></i><span>Acero ASTM A36, A572 y tubería estructural</span></li>
+          <li class="flex items-start gap-3"><i data-lucide="square-check" class="w-4 h-4 mt-1 text-brand"></i><span>Soldadura calificada bajo AWS D1.1</span></li>
+          <li class="flex items-start gap-3"><i data-lucide="square-check" class="w-4 h-4 mt-1 text-brand"></i><span>Acabados anticorrosivos + pintura horneada</span></li>
+          <li class="flex items-start gap-3"><i data-lucide="square-check" class="w-4 h-4 mt-1 text-brand"></i><span>Montaje con grúas certificadas en sitio</span></li>
+        </ul>
+        <a href="disenoyfabricacion.html" class="mt-10 inline-flex items-center gap-3 text-bone ed-link w-fit">
+          Ver ficha completa <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
+        </a>
+      </div>
+    </div>
+  </article>
+
+  <!-- Fila 02 · PANEL EN POLIURETANO (invertida) -->
+  <article class="relative border-t border-bone/10">
+    <div class="grid grid-cols-12">
+      <!-- Texto izquierda -->
+      <div class="order-2 md:order-1 col-span-12 md:col-span-5 bg-ink2 px-6 md:px-12 py-14 md:py-24 flex flex-col justify-center">
+        <div class="flex items-center gap-3 mb-8">
+          <span class="h-px w-10 bg-brand"></span>
+          <span class="text-[11px] tracking-[0.3em] uppercase text-brand">Aislamiento · Estanqueidad</span>
+        </div>
+        <h3 class="serif tracking-tightest leading-[1] text-bone" style="font-size: clamp(2rem, 3.6vw, 3.5rem);">
+          Panel en poliuretano para cubiertas y fachadas.
+        </h3>
+        <p class="mt-6 text-bone/75 leading-relaxed">
+          Sándwich termoacústico con núcleo de poliuretano inyectado. Ideal para cavas, naves industriales, cuartos fríos y fachadas de alto desempeño.
+        </p>
+        <div class="mt-8 grid grid-cols-2 gap-6 text-sm">
+          <div class="border-t border-bone/15 pt-4">
+            <div class="serif text-3xl text-brand">30–100 mm</div>
+            <div class="text-bone/60 text-[11px] uppercase tracking-[0.22em] mt-1">Espesores disponibles</div>
+          </div>
+          <div class="border-t border-bone/15 pt-4">
+            <div class="serif text-3xl text-steel">λ 0.022</div>
+            <div class="text-bone/60 text-[11px] uppercase tracking-[0.22em] mt-1">Conductividad térmica</div>
+          </div>
+          <div class="border-t border-bone/15 pt-4">
+            <div class="serif text-3xl">Trap-Z</div>
+            <div class="text-bone/60 text-[11px] uppercase tracking-[0.22em] mt-1">Perfilería</div>
+          </div>
+          <div class="border-t border-bone/15 pt-4">
+            <div class="serif text-3xl italic">PIR</div>
+            <div class="text-bone/60 text-[11px] uppercase tracking-[0.22em] mt-1">Retardante de llama</div>
+          </div>
+        </div>
+        <a href="panel-poliuretano.html" class="mt-10 inline-flex items-center gap-3 text-bone ed-link w-fit">
+          Ver ficha completa <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
+        </a>
+      </div>
+      <!-- Media derecha -->
+      <div class="order-1 md:order-2 col-span-12 md:col-span-7 relative min-h-[70vh] md:min-h-[90vh] overflow-hidden duotone-orange vignette">
+        <img data-parallax="0.10" src="https://images.pexels.com/photos/10697106/pexels-photo-10697106.jpeg?auto=compress&cs=tinysrgb&w=1600"
+             onerror="this.onerror=null;this.src='https://mgservicesas.com/panelesenpoliuretanomasypolimeros.png';"
+             alt="Cámara de refrigeración y bodega aislada con panel sándwich de poliuretano"
+             class="absolute inset-0 w-[110%] h-[110%] object-cover kenburns" />
+        <div class="absolute top-6 right-6 text-bone/90 text-[11px] tracking-[0.3em] uppercase text-right">
+          <span class="inline-block px-3 py-1 bg-brand text-ink">02 / 04 · Panel</span>
+        </div>
+        <div class="absolute bottom-6 left-6 text-bone/90 text-[11px] tracking-[0.25em] uppercase">
+          Cerramiento térmico
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <!-- Fila 03 · MANTENIMIENTO INDUSTRIAL -->
+  <article class="relative border-t border-bone/10">
+    <div class="grid grid-cols-12">
+      <div class="col-span-12 md:col-span-7 relative min-h-[70vh] md:min-h-[90vh] overflow-hidden duotone-blue vignette">
+        <img data-parallax="0.14" src="https://images.pexels.com/photos/30223853/pexels-photo-30223853.jpeg?auto=compress&cs=tinysrgb&w=1600"
+             onerror="this.onerror=null;this.src='https://mgservicesas.com/mantenimiento.png';this.onerror=function(){this.onerror=null;this.src='https://images.pexels.com/photos/236705/pexels-photo-236705.jpeg?auto=compress&cs=tinysrgb&w=1600';this.onerror=function(){this.onerror=null;this.src='https://images.pexels.com/photos/29976478/pexels-photo-29976478.jpeg?auto=compress&cs=tinysrgb&w=1600';};};"
+             alt="Mantenimiento industrial de cubiertas y estructuras metálicas"
+             class="absolute inset-0 w-[110%] h-[110%] object-cover kenburns" />
+        <div class="absolute top-6 left-6 text-bone/90 text-[11px] tracking-[0.3em] uppercase">
+          <span class="inline-block px-3 py-1 bg-steel text-bone">03 / 04 · Mantenimiento</span>
+        </div>
+        <div class="absolute bottom-6 right-6 text-bone/90 text-[11px] tracking-[0.25em] uppercase">
+          Preventivo · Correctivo · Predictivo
+        </div>
+      </div>
+      <div class="col-span-12 md:col-span-5 bg-ink2 px-6 md:px-12 py-14 md:py-24 flex flex-col justify-center">
+        <div class="flex items-center gap-3 mb-8">
+          <span class="h-px w-10 bg-steel"></span>
+          <span class="text-[11px] tracking-[0.3em] uppercase text-steel">Operación continua</span>
+        </div>
+        <h3 class="serif tracking-tightest leading-[1] text-bone" style="font-size: clamp(2rem, 3.6vw, 3.5rem);">
+          Mantenimiento industrial con respuesta 24/7.
+        </h3>
+        <p class="mt-6 text-bone/75 leading-relaxed">
+          Programas de mantenimiento preventivo y correctivo para plantas, bodegas y cubiertas. Reemplazo de tejas, repintado, refuerzo estructural y adecuaciones sin parar la operación.
+        </p>
+        <div class="mt-8 flex flex-wrap gap-2 text-[11px] tracking-[0.2em] uppercase">
+          <span class="border border-bone/20 px-3 py-1">Cubiertas</span>
+          <span class="border border-bone/20 px-3 py-1">Cerchas</span>
+          <span class="border border-bone/20 px-3 py-1">Canales</span>
+          <span class="border border-bone/20 px-3 py-1">Pintura</span>
+          <span class="border border-bone/20 px-3 py-1">Bajantes</span>
+          <span class="border border-bone/20 px-3 py-1">Reparaciones</span>
+        </div>
+        <a href="mantenimiento-industrial.html" class="mt-10 inline-flex items-center gap-3 text-bone ed-link w-fit">
+          Ver ficha completa <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
+        </a>
+      </div>
+    </div>
+  </article>
+
+  <!-- Fila 04 · CUBIERTAS METÁLICAS (CTA) -->
+  <article class="relative border-t border-bone/10">
+    <div class="grid grid-cols-12">
+      <div class="order-2 md:order-1 col-span-12 md:col-span-5 bg-ink2 px-6 md:px-12 py-14 md:py-24 flex flex-col justify-center">
+        <div class="flex items-center gap-3 mb-8">
+          <span class="h-px w-10 bg-brand"></span>
+          <span class="text-[11px] tracking-[0.3em] uppercase text-brand">Cubiertas · Fachadas</span>
+        </div>
+        <h3 class="serif tracking-tightest leading-[1] text-bone" style="font-size: clamp(2rem, 3.6vw, 3.5rem);">
+          Cubiertas metálicas que resisten el clima colombiano.
+        </h3>
+        <p class="mt-6 text-bone/75 leading-relaxed">
+          Teja trapezoidal, Standing Seam, cubiertas curvas, traslúcidas y skylight. Diseño de pendientes, canales y bajantes para un drenaje limpio.
+        </p>
+        <div class="mt-10">
+          <a href="#contacto" class="inline-flex items-center gap-3 rounded-full bg-brand text-ink px-6 py-3 hover:bg-bone transition-colors">
+            Cotizar cubierta <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
+          </a>
+        </div>
+      </div>
+      <div class="order-1 md:order-2 col-span-12 md:col-span-7 relative min-h-[70vh] md:min-h-[90vh] overflow-hidden duotone-ink vignette">
+        <img data-parallax="0.10" src="https://mgservicesas.com/metalica.png"
+             alt="Cubiertas metálicas"
+             class="absolute inset-0 w-[110%] h-[110%] object-cover kenburns" />
+        <div class="absolute top-6 right-6 text-bone/90 text-[11px] tracking-[0.3em] uppercase text-right">
+          <span class="inline-block px-3 py-1 bg-bone text-ink">04 / 04 · Cubiertas</span>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <div class="h-20"></div>
+</section>
+
+<!-- PROYECTOS (03) -->
+<section id="proyectos" class="relative blue-wash text-ink">
+  <div class="max-w-[1440px] mx-auto px-6 md:px-10 py-24 md:py-40">
+    <div class="flex items-end justify-between gap-6 flex-wrap mb-14">
+      <div>
+        <p class="sec-num">03 — Proyectos</p>
+        <h2 class="mt-3 serif tracking-tightest leading-[0.98]" style="font-size: clamp(2.25rem, 5.5vw, 5rem);">
+          El oficio, <em class="italic font-extralight text-ink/60">en obra</em>.
+        </h2>
+      </div>
+      <p class="max-w-md text-ink/70">
+        Una selección de obras reales entregadas a clientes industriales y comerciales en Colombia. Fotos de taller y sitio.
+      </p>
+    </div>
+
+    <!-- Grid de 6 -->
+    <div class="grid grid-cols-12 gap-4 md:gap-6">
+      <!-- Principal: Cubierta Techmet / Teja tipo sándwich Metecno -->
+      <a href="#contacto" class="proj-card col-span-12 md:col-span-8 relative aspect-[16/10] overflow-hidden bg-ink rounded-sm group">
+        <img src="https://images.pexels.com/photos/236705/pexels-photo-236705.jpeg?auto=compress&cs=tinysrgb&w=1920"
+             onerror="this.onerror=null;this.src='https://mgservicesas.com/metalica.png';"
+             alt="Instalación de cubierta con teja tipo sándwich Techmet Metecno"
+             class="absolute inset-0 w-full h-full object-cover" />
+        <div class="absolute inset-0 bg-gradient-to-t from-ink/90 via-ink/30 to-transparent"></div>
+        <div class="meta absolute bottom-5 left-5 right-5 text-bone">
+          <div class="flex items-center gap-3 mb-2">
+            <span class="inline-block px-2 py-0.5 bg-brand text-ink text-[10px] uppercase tracking-[0.2em]">Destacado</span>
+            <div class="text-[11px] uppercase tracking-[0.25em] text-bone/80">Industria · Bogotá</div>
+          </div>
+          <div class="serif text-2xl md:text-4xl">Cubierta con teja Techmet · sándwich Metecno</div>
+          <div class="text-sm text-bone/70 mt-2 max-w-xl">Instalación de cubierta aislada térmicamente con panel sándwich Techmet de Metecno sobre estructura metálica propia.</div>
+        </div>
+      </a>
+      <!-- Estructura metálica -->
+      <a href="#contacto" class="proj-card col-span-12 md:col-span-4 relative aspect-[4/5] overflow-hidden bg-ink rounded-sm group">
+        <img src="https://images.pexels.com/photos/14213937/pexels-photo-14213937.jpeg?auto=compress&cs=tinysrgb&w=1400"
+             onerror="this.onerror=null;this.src='https://mgservicesas.com/disenoyfabricaciondeestructurasmetalicas.png';"
+             alt="Estructura metálica con cerchas y columnas de acero en planta industrial"
+             class="absolute inset-0 w-full h-full object-cover" />
+        <div class="absolute inset-0 bg-gradient-to-t from-steel/75 via-ink/20 to-transparent mix-blend-multiply"></div>
+        <div class="meta absolute bottom-5 left-5 right-5 text-bone">
+          <div class="text-[11px] uppercase tracking-[0.25em] text-bone/80">Estructura</div>
+          <div class="serif text-2xl md:text-3xl mt-2">Cerchas y columnas en acero estructural</div>
+        </div>
+      </a>
+      <!-- Cámara de refrigeración en panel Metecno -->
+      <a href="#contacto" class="proj-card col-span-6 md:col-span-4 relative aspect-square overflow-hidden bg-ink rounded-sm group">
+        <img src="https://images.pexels.com/photos/10697106/pexels-photo-10697106.jpeg?auto=compress&cs=tinysrgb&w=1200"
+             onerror="this.onerror=null;this.src='https://mgservicesas.com/panelesenpoliuretanomasypolimeros.png';"
+             alt="Cámara de refrigeración en panel de poliuretano Metecno"
+             class="absolute inset-0 w-full h-full object-cover" />
+        <div class="absolute inset-0 bg-gradient-to-t from-brand/60 via-ink/20 to-transparent mix-blend-multiply"></div>
+        <div class="meta absolute bottom-4 left-4 right-4 text-bone">
+          <div class="text-[11px] uppercase tracking-[0.25em] text-bone/80">Panel · Metecno</div>
+          <div class="serif text-xl md:text-2xl mt-1">Cámara de refrigeración en panel de poliuretano</div>
+        </div>
+      </a>
+      <!-- Mantenimiento en cubiertas -->
+      <a href="#contacto" class="proj-card col-span-6 md:col-span-4 relative aspect-square overflow-hidden bg-ink rounded-sm group">
+        <img src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?auto=format&fit=crop&w=1200&q=80"
+             onerror="this.onerror=null;this.src='https://images.pexels.com/photos/14213937/pexels-photo-14213937.jpeg?auto=compress&cs=tinysrgb&w=1200';this.onerror=function(){this.onerror=null;this.src='https://images.pexels.com/photos/29976478/pexels-photo-29976478.jpeg?auto=compress&cs=tinysrgb&w=1200';this.onerror=function(){this.onerror=null;this.src='https://mgservicesas.com/mantenimiento.png';};};"
+             alt="Mantenimiento correctivo: repintado y refuerzo estructural de cubiertas"
+             class="absolute inset-0 w-full h-full object-cover" />
+        <div class="absolute inset-0 bg-gradient-to-t from-ink/85 via-ink/25 to-transparent"></div>
+        <div class="meta absolute bottom-4 left-4 right-4 text-bone">
+          <div class="text-[11px] uppercase tracking-[0.25em] text-bone/80">Mantenimiento</div>
+          <div class="serif text-xl md:text-2xl mt-1">Repintado y refuerzo de cubiertas</div>
+        </div>
+      </a>
+      <!-- Fachada -->
+      <a href="#contacto" class="proj-card col-span-12 md:col-span-4 relative aspect-square overflow-hidden bg-ink rounded-sm group">
+        <img src="https://mgservicesas.com/estructurasmetalicasboghota.png"
+             onerror="this.onerror=null;this.src='https://images.pexels.com/photos/236705/pexels-photo-236705.jpeg?auto=compress&cs=tinysrgb&w=1200';"
+             alt="Fachada metálica y cerramiento en nave industrial"
+             class="absolute inset-0 w-full h-full object-cover" />
+        <div class="absolute inset-0 bg-gradient-to-t from-steel/65 via-ink/25 to-transparent mix-blend-multiply"></div>
+        <div class="meta absolute bottom-4 left-4 right-4 text-bone">
+          <div class="text-[11px] uppercase tracking-[0.25em] text-bone/80">Fachada · Bogotá</div>
+          <div class="serif text-xl md:text-2xl mt-1">Cerramiento comercial en panel</div>
+        </div>
+      </a>
+    </div>
+
+    <!-- Swiper carrusel de detalle -->
+    <div class="mt-20">
+      <div class="flex items-end justify-between mb-6">
+        <h3 class="serif tracking-tightest" style="font-size: clamp(1.75rem, 3vw, 2.5rem);">Del taller a la obra.</h3>
+        <div class="flex gap-2">
+          <button id="prev-slide" class="w-10 h-10 rounded-full border border-ink/20 hover:bg-ink hover:text-bone transition"><i data-lucide="chevron-left" class="w-4 h-4 inline"></i></button>
+          <button id="next-slide" class="w-10 h-10 rounded-full border border-ink/20 hover:bg-ink hover:text-bone transition"><i data-lucide="chevron-right" class="w-4 h-4 inline"></i></button>
+        </div>
+      </div>
+      <div class="swiper mg-swiper">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide"><div class="aspect-[4/3] overflow-hidden rounded-sm bg-ink"><img src="https://images.pexels.com/photos/2760343/pexels-photo-2760343.jpeg?auto=compress&cs=tinysrgb&w=1200" class="w-full h-full object-cover" alt="Soldadura en taller" onerror="this.onerror=null;this.src='https://mgservicesas.com/disenoyfabricaciondeestructurasmetalicas.png';" /></div></div>
+          <div class="swiper-slide"><div class="aspect-[4/3] overflow-hidden rounded-sm bg-ink"><img src="https://images.pexels.com/photos/14213937/pexels-photo-14213937.jpeg?auto=compress&cs=tinysrgb&w=1200" class="w-full h-full object-cover" alt="Estructura en acero" onerror="this.onerror=null;this.src='https://mgservicesas.com/disenoyfabricaciondeestructurasmetalicas.png';" /></div></div>
+          <div class="swiper-slide"><div class="aspect-[4/3] overflow-hidden rounded-sm bg-ink"><img src="https://images.pexels.com/photos/10697106/pexels-photo-10697106.jpeg?auto=compress&cs=tinysrgb&w=1200" class="w-full h-full object-cover" alt="Panel poliuretano Metecno" onerror="this.onerror=null;this.src='https://mgservicesas.com/panelesenpoliuretanomasypolimeros.png';" /></div></div>
+          <div class="swiper-slide"><div class="aspect-[4/3] overflow-hidden rounded-sm bg-ink"><img src="https://mgservicesas.com/mantenimiento.png" class="w-full h-full object-cover" alt="Mantenimiento industrial de cubiertas" onerror="this.onerror=null;this.src='https://images.pexels.com/photos/29976478/pexels-photo-29976478.jpeg?auto=compress&cs=tinysrgb&w=1200';" /></div></div>
+          <div class="swiper-slide"><div class="aspect-[4/3] overflow-hidden rounded-sm bg-ink"><img src="https://images.pexels.com/photos/236705/pexels-photo-236705.jpeg?auto=compress&cs=tinysrgb&w=1200" class="w-full h-full object-cover" alt="Nave industrial con cubierta metálica" onerror="this.onerror=null;this.src='https://mgservicesas.com/metalica.png';" /></div></div>
+          <div class="swiper-slide"><div class="aspect-[4/3] overflow-hidden rounded-sm bg-ink"><img src="https://images.pexels.com/photos/29976478/pexels-photo-29976478.jpeg?auto=compress&cs=tinysrgb&w=1200" class="w-full h-full object-cover" alt="Fabricación con soldadura" onerror="this.onerror=null;this.src='https://mgservicesas.com/disenoyfabricaciondeestructurasmetalicas.png';" /></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CÓMO TRABAJAMOS (04) -->
+<section id="manifiesto" class="relative bg-ink text-bone overflow-hidden">
+  <!-- Backdrop image -->
+  <img src="https://mgservicesas.com/disenoyfabricaciondeestructurasmetalicas.png" alt=""
+       class="absolute inset-0 w-full h-full object-cover opacity-20" />
+  <div class="absolute inset-0" style="background: linear-gradient(180deg, rgba(14,13,11,.92), rgba(8,120,184,.35) 55%, rgba(14,13,11,.96));"></div>
+  <div class="relative max-w-[1440px] mx-auto px-6 md:px-10 py-28 md:py-40">
+    <p class="sec-num text-bone/60">04 — Cómo trabajamos</p>
+    <h2 class="mt-6 serif font-light tracking-tightest leading-[1]" style="font-size: clamp(2.5rem, 7vw, 7rem);">
+      La calidad <em class="italic font-extralight grad-text">en cada detalle</em>.
+    </h2>
+    <p class="mt-8 max-w-2xl text-bone/75 text-lg leading-relaxed">
+      Un método probado en más de una década de obra: oficio, planeación y responsabilidad desde la primera visita hasta la entrega final.
+    </p>
+
+    <!-- Timeline 4 pasos -->
+    <div class="mt-20 relative">
+      <!-- Línea conectora -->
+      <div class="hidden md:block absolute left-0 right-0 top-[52px] h-px bg-gradient-to-r from-brand/0 via-brand/60 to-steel/0"></div>
+
+      <div class="grid md:grid-cols-4 gap-10 md:gap-6">
+        <!-- Paso 01 -->
+        <div class="relative">
+          <div class="flex items-center gap-3">
+            <span class="relative flex items-center justify-center h-[26px] w-[26px] rounded-full bg-brand ring-4 ring-ink z-10">
+              <span class="h-2 w-2 rounded-full bg-ink"></span>
+            </span>
+            <span class="serif text-brand text-sm tracking-[0.22em] uppercase">Paso 01</span>
+          </div>
+          <div class="mt-8">
+            <div class="inline-flex items-center justify-center w-12 h-12 rounded-sm bg-brand/15 text-brand mb-5">
+              <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            </div>
+            <h3 class="serif text-2xl leading-tight">Diagnóstico en sitio</h3>
+            <p class="mt-3 text-sm text-bone/70 leading-relaxed">Visita técnica, medición y levantamiento. Escuchamos tu necesidad y entendemos la operación antes de proponer.</p>
+          </div>
+        </div>
+
+        <!-- Paso 02 -->
+        <div class="relative">
+          <div class="flex items-center gap-3">
+            <span class="relative flex items-center justify-center h-[26px] w-[26px] rounded-full bg-steel ring-4 ring-ink z-10">
+              <span class="h-2 w-2 rounded-full bg-ink"></span>
+            </span>
+            <span class="serif text-steel text-sm tracking-[0.22em] uppercase">Paso 02</span>
+          </div>
+          <div class="mt-8">
+            <div class="inline-flex items-center justify-center w-12 h-12 rounded-sm bg-steel/15 text-steel mb-5">
+              <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="18" rx="2"/><line x1="8" y1="8" x2="16" y2="8"/><line x1="8" y1="12" x2="16" y2="12"/><line x1="8" y1="16" x2="13" y2="16"/></svg>
+            </div>
+            <h3 class="serif text-2xl leading-tight">Cálculo y cotización</h3>
+            <p class="mt-3 text-sm text-bone/70 leading-relaxed">Memorias de cálculo, propuesta detallada con alcance, materiales, tiempos y precio. Transparente, sin sorpresas.</p>
+          </div>
+        </div>
+
+        <!-- Paso 03 -->
+        <div class="relative">
+          <div class="flex items-center gap-3">
+            <span class="relative flex items-center justify-center h-[26px] w-[26px] rounded-full bg-brand ring-4 ring-ink z-10">
+              <span class="h-2 w-2 rounded-full bg-ink"></span>
+            </span>
+            <span class="serif text-brand text-sm tracking-[0.22em] uppercase">Paso 03</span>
+          </div>
+          <div class="mt-8">
+            <div class="inline-flex items-center justify-center w-12 h-12 rounded-sm bg-brand/15 text-brand mb-5">
+              <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+            </div>
+            <h3 class="serif text-2xl leading-tight">Suministro y fabricación</h3>
+            <p class="mt-3 text-sm text-bone/70 leading-relaxed">Producción en nuestro taller con acero y paneles de aliados certificados. Control de calidad en cada etapa.</p>
+          </div>
+        </div>
+
+        <!-- Paso 04 -->
+        <div class="relative">
+          <div class="flex items-center gap-3">
+            <span class="relative flex items-center justify-center h-[26px] w-[26px] rounded-full bg-steel ring-4 ring-ink z-10">
+              <span class="h-2 w-2 rounded-full bg-ink"></span>
+            </span>
+            <span class="serif text-steel text-sm tracking-[0.22em] uppercase">Paso 04</span>
+          </div>
+          <div class="mt-8">
+            <div class="inline-flex items-center justify-center w-12 h-12 rounded-sm bg-steel/15 text-steel mb-5">
+              <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            <h3 class="serif text-2xl leading-tight">Instalación y entrega</h3>
+            <p class="mt-3 text-sm text-bone/70 leading-relaxed">Montaje en obra con personal certificado en alturas (NR-29), entrega con reporte técnico y soporte post-venta.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ALIADOS (05) - marquee -->
+<section class="relative bg-paper text-ink py-16 md:py-24 border-y border-ink/10">
+  <div class="max-w-[1440px] mx-auto px-6 md:px-10">
+    <div class="flex items-baseline justify-between mb-8">
+      <p class="sec-num">05 — Confianza</p>
+      <p class="text-xs uppercase tracking-[0.25em] text-ink/60">Clientes y aliados</p>
+    </div>
+    <h3 class="serif tracking-tightest leading-[1]" style="font-size: clamp(1.5rem, 2.4vw, 2.25rem);">
+      Empresas que construimos juntos.
+    </h3>
+  </div>
+  <div class="mt-10 overflow-hidden">
+    <div class="flex gap-14 whitespace-nowrap marq-slow serif text-2xl md:text-3xl tracking-tightish text-ink/70">
+      <span>METECNO</span><span class="text-brand">◇</span>
+      <span>ARKOS</span><span class="text-steel">◇</span>
+      <span>AGOFER</span><span class="text-brand">◇</span>
+      <span>CUBRICOL</span><span class="text-steel">◇</span>
+      <span>SIKA</span><span class="text-brand">◇</span>
+      <span>ARGOS</span><span class="text-steel">◇</span>
+      <span>CORONA</span><span class="text-brand">◇</span>
+      <span>TERPEL</span><span class="text-steel">◇</span>
+      <span>ALKOSTO</span><span class="text-brand">◇</span>
+      <span>GRUPO ÉXITO</span><span class="text-steel">◇</span>
+      <span>NUTRESA</span><span class="text-brand">◇</span>
+      <span>BAVARIA</span><span class="text-steel">◇</span>
+      <span>COCA-COLA FEMSA</span><span class="text-brand">◇</span>
+      <span>METECNO</span><span class="text-steel">◇</span>
+      <span>ARKOS</span><span class="text-brand">◇</span>
+      <span>AGOFER</span><span class="text-steel">◇</span>
+      <span>CUBRICOL</span><span class="text-brand">◇</span>
+      <span>SIKA</span><span class="text-steel">◇</span>
+      <span>ARGOS</span><span class="text-brand">◇</span>
+      <span>CORONA</span><span class="text-steel">◇</span>
+    </div>
+  </div>
+</section>
+
+<!-- UBICACIÓN (06) -->
+<section class="relative bg-bone text-ink">
+  <div class="max-w-[1440px] mx-auto px-6 md:px-10 py-24 md:py-32">
+    <div class="grid grid-cols-12 gap-8 md:gap-14">
+      <div class="col-span-12 md:col-span-5">
+        <p class="sec-num">06 — Ubicación</p>
+        <h2 class="mt-3 serif tracking-tightest leading-[1]" style="font-size: clamp(2rem, 4.5vw, 3.75rem);">
+          Desde Bogotá, <em class="italic text-ink/60">hacia el país</em>.
+        </h2>
+        <div class="mt-10 space-y-6 text-ink/80">
+          <div class="flex items-start gap-4">
+            <div class="w-10 h-10 rounded-full bg-steel/10 flex items-center justify-center text-steel flex-shrink-0"><i data-lucide="map-pin" class="w-5 h-5"></i></div>
+            <div>
+              <div class="text-[11px] tracking-[0.25em] uppercase text-ink/50">Taller principal</div>
+              <div class="mt-1">Bogotá D.C., Colombia</div>
+            </div>
+          </div>
+          <div class="flex items-start gap-4">
+            <div class="w-10 h-10 rounded-full bg-brand/15 flex items-center justify-center text-brand flex-shrink-0"><i data-lucide="phone" class="w-5 h-5"></i></div>
+            <div>
+              <div class="text-[11px] tracking-[0.25em] uppercase text-ink/50">Contacto directo</div>
+              <div class="mt-1">+57 314 310 1649 · +57 310 226 4229</div>
+            </div>
+          </div>
+          <div class="flex items-start gap-4">
+            <div class="w-10 h-10 rounded-full bg-ink/5 flex items-center justify-center text-ink flex-shrink-0"><i data-lucide="mail" class="w-5 h-5"></i></div>
+            <div>
+              <div class="text-[11px] tracking-[0.25em] uppercase text-ink/50">Correo</div>
+              <div class="mt-1">mgservicegroupsas@gmail.com</div>
+            </div>
+          </div>
+          <div class="flex items-start gap-4">
+            <div class="w-10 h-10 rounded-full bg-steel/10 flex items-center justify-center text-steel flex-shrink-0"><i data-lucide="clock" class="w-5 h-5"></i></div>
+            <div>
+              <div class="text-[11px] tracking-[0.25em] uppercase text-ink/50">Horario</div>
+              <div class="mt-1">Lun a Sáb · 7:00 am – 5:00 pm</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-span-12 md:col-span-7">
+        <div class="aspect-[4/3] md:aspect-[16/11] rounded-sm overflow-hidden ring-1 ring-ink/15 bg-ink relative">
+          <iframe
+            src="https://www.google.com/maps?q=Bogot%C3%A1%2C+Colombia&output=embed"
+            class="w-full h-full"
+            style="border:0; filter: grayscale(0.2) contrast(1.05);"
+            loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACTO (07) -->
+<section id="contacto" class="relative bg-ink text-bone overflow-hidden">
+  <div class="absolute inset-0 pointer-events-none" style="background: radial-gradient(ellipse at 80% 20%, rgba(8,120,184,.3), transparent 60%), radial-gradient(ellipse at 20% 80%, rgba(248,136,56,.22), transparent 55%);"></div>
+  <div class="relative max-w-[1440px] mx-auto px-6 md:px-10 py-24 md:py-40">
+    <div class="grid grid-cols-12 gap-10 md:gap-16">
+      <div class="col-span-12 md:col-span-5">
+        <p class="sec-num text-bone/60">07 — Contacto</p>
+        <h2 class="mt-3 serif tracking-tightest leading-[1]" style="font-size: clamp(2.5rem, 6vw, 5.5rem);">
+          Empecemos la <em class="italic font-extralight grad-text">obra</em>.
+        </h2>
+        <p class="mt-8 text-bone/70 max-w-md leading-relaxed">
+          Cuéntanos qué necesitas construir. Te respondemos en menos de 24 horas hábiles con una visita técnica o un estimado inicial.
+        </p>
+        <div class="mt-10 space-y-4 text-bone/80">
+          <a href="https://wa.me/573143101649" target="_blank" rel="noopener" class="inline-flex items-center gap-3 ed-link">
+            <i data-lucide="message-circle" class="w-4 h-4 text-brand"></i> +57 314 310 1649 (WhatsApp)
+          </a><br/>
+          <a href="mailto:mgservicegroupsas@gmail.com" class="inline-flex items-center gap-3 ed-link">
+            <i data-lucide="mail" class="w-4 h-4 text-steel"></i> mgservicegroupsas@gmail.com
+          </a>
+        </div>
+        <div class="mt-10 flex gap-3">
+          <a href="https://www.instagram.com/mgservicegroupsas" target="_blank" rel="noopener" aria-label="Instagram" class="group w-11 h-11 rounded-full border border-bone/25 bg-bone/5 hover:bg-brand hover:border-brand flex items-center justify-center transition-all hover:-translate-y-0.5">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-bone group-hover:text-ink transition"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+          </a>
+          <a href="https://www.facebook.com/174gru12zB" target="_blank" rel="noopener" aria-label="Facebook" class="group w-11 h-11 rounded-full border border-bone/25 bg-bone/5 hover:bg-steel hover:border-steel flex items-center justify-center transition-all hover:-translate-y-0.5">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" class="text-bone transition"><path d="M22 12a10 10 0 1 0-11.56 9.88v-6.99H7.9V12h2.54V9.8c0-2.51 1.49-3.89 3.77-3.89 1.09 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56V12h2.77l-.44 2.89h-2.33v6.99A10 10 0 0 0 22 12z"/></svg>
+          </a>
+          <a href="https://wa.me/573143101649" target="_blank" rel="noopener" aria-label="WhatsApp" class="group w-11 h-11 rounded-full border border-bone/25 bg-bone/5 hover:bg-brand hover:border-brand flex items-center justify-center transition-all hover:-translate-y-0.5">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" class="text-bone group-hover:text-ink transition"><path d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.34.22-.64.07-.3-.15-1.26-.46-2.4-1.48-.89-.79-1.49-1.76-1.66-2.06-.17-.3-.02-.46.13-.61.13-.13.3-.34.45-.51.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51-.17-.01-.37-.01-.57-.01-.2 0-.52.07-.79.37s-1.04 1.02-1.04 2.48c0 1.46 1.07 2.88 1.22 3.08.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.69.63.71.23 1.36.2 1.87.12.57-.08 1.76-.72 2-1.41.25-.7.25-1.29.17-1.41-.07-.13-.27-.2-.57-.35zM12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91S17.5 2 12.04 2zm0 18.15c-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.19 8.19 0 0 1-1.26-4.38c0-4.54 3.7-8.23 8.25-8.23 2.2 0 4.27.86 5.83 2.42 1.55 1.56 2.41 3.63 2.41 5.83 0 4.54-3.7 8.23-8.24 8.23z"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Formulario -->
+      <div class="col-span-12 md:col-span-7">
+        <form id="contact-form" action="https://formsubmit.co/mgservicegroupsas@gmail.com" method="POST" class="space-y-6 border border-bone/15 p-6 md:p-10 rounded-sm bg-ink2/60 backdrop-blur-sm">
+          <!-- Formsubmit config -->
+          <input type="hidden" name="_subject" value="Nueva solicitud de cotización — mgservicegroupsas.com" />
+          <input type="hidden" name="_captcha" value="false" />
+          <input type="hidden" name="_template" value="table" />
+          <input type="hidden" name="_autoresponse" value="Gracias por contactar a MG Service Group SAS. Hemos recibido tu solicitud y te escribiremos en menos de 24 horas. — Equipo MG Service Group" />
+          <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off" />
+
+          <div class="grid md:grid-cols-2 gap-6">
+            <label class="block">
+              <span class="text-[11px] uppercase tracking-[0.22em] text-bone/60">Nombre</span>
+              <input required name="nombre" type="text" class="mt-2 w-full bg-transparent border-b border-bone/30 focus:border-brand outline-none py-3 text-bone placeholder-bone/40" placeholder="Tu nombre" />
+            </label>
+            <label class="block">
+              <span class="text-[11px] uppercase tracking-[0.22em] text-bone/60">Empresa</span>
+              <input name="empresa" type="text" class="mt-2 w-full bg-transparent border-b border-bone/30 focus:border-steel outline-none py-3 text-bone placeholder-bone/40" placeholder="Opcional" />
+            </label>
+          </div>
+          <div class="grid md:grid-cols-2 gap-6">
+            <label class="block">
+              <span class="text-[11px] uppercase tracking-[0.22em] text-bone/60">Correo</span>
+              <input required name="correo" type="email" class="mt-2 w-full bg-transparent border-b border-bone/30 focus:border-brand outline-none py-3 text-bone placeholder-bone/40" placeholder="tu@email.com" />
+            </label>
+            <label class="block">
+              <span class="text-[11px] uppercase tracking-[0.22em] text-bone/60">Teléfono</span>
+              <input name="telefono" type="tel" class="mt-2 w-full bg-transparent border-b border-bone/30 focus:border-steel outline-none py-3 text-bone placeholder-bone/40" placeholder="+57 …" />
+            </label>
+          </div>
+          <label class="block">
+            <span class="text-[11px] uppercase tracking-[0.22em] text-bone/60">Servicio de interés</span>
+            <select name="servicio" class="mt-2 w-full bg-transparent border-b border-bone/30 focus:border-brand outline-none py-3 text-bone">
+              <option value="" class="bg-ink text-bone">Selecciona…</option>
+              <option class="bg-ink text-bone">Diseño y fabricación de estructuras</option>
+              <option class="bg-ink text-bone">Cubiertas metálicas</option>
+              <option class="bg-ink text-bone">Panel en poliuretano</option>
+              <option class="bg-ink text-bone">Mantenimiento industrial</option>
+              <option class="bg-ink text-bone">Otro</option>
+            </select>
+          </label>
+          <label class="block">
+            <span class="text-[11px] uppercase tracking-[0.22em] text-bone/60">Cuéntanos sobre tu proyecto</span>
+            <textarea required name="mensaje" rows="5" class="mt-2 w-full bg-transparent border-b border-bone/30 focus:border-brand outline-none py-3 text-bone placeholder-bone/40" placeholder="Ubicación, metros cuadrados, tiempos, referencias…"></textarea>
+          </label>
+          <div class="flex items-center justify-between flex-wrap gap-4 pt-2">
+            <p class="text-[11px] text-bone/50 max-w-sm">Al enviar, aceptas nuestra <a href="#politica" class="underline hover:text-brand">política de tratamiento de datos</a>.</p>
+            <button type="submit" class="inline-flex items-center gap-3 rounded-full bg-brand text-ink px-6 py-3 hover:bg-bone transition-colors">
+              Enviar solicitud <i data-lucide="arrow-up-right" class="w-4 h-4"></i>
+            </button>
+          </div>
+          <p id="form-status" class="text-sm text-bone/70"></p>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="bg-ink2 text-bone/80 border-t border-bone/10">
+  <div class="max-w-[1440px] mx-auto px-6 md:px-10 py-16 md:py-20">
+    <div class="grid grid-cols-12 gap-10">
+      <div class="col-span-12 md:col-span-5">
+        <div class="flex items-center gap-3">
+          <span class="relative inline-flex items-center justify-center h-12 w-12 bg-white rounded-xl ring-1 ring-bone/20 shadow-md p-1.5">
+            <img src="https://mgservicesas.com/logo-mgservices-group.jpeg" alt="MG Service Group" class="max-h-full max-w-full object-contain" style="background:transparent;" />
+          </span>
+          <span class="serif text-xl">MG Service Group <em class="italic text-bone/50">SAS</em></span>
+        </div>
+        <p class="mt-6 max-w-md text-sm leading-relaxed text-bone/65">
+          Taller colombiano de estructuras metálicas, cubiertas y panel en poliuretano. Diseñamos, fabricamos, instalamos y mantenemos.
+        </p>
+      </div>
+      <div class="col-span-6 md:col-span-2">
+        <div class="text-[11px] uppercase tracking-[0.25em] text-bone/50 mb-4">Servicios</div>
+        <ul class="space-y-2 text-sm">
+          <li><a class="ed-link" href="disenoyfabricacion.html">Diseño y fabricación</a></li>
+          <li><a class="ed-link" href="panel-poliuretano.html">Panel poliuretano</a></li>
+          <li><a class="ed-link" href="mantenimiento-industrial.html">Mantenimiento</a></li>
+          <li><a class="ed-link" href="#servicios">Cubiertas metálicas</a></li>
+        </ul>
+      </div>
+      <div class="col-span-6 md:col-span-2">
+        <div class="text-[11px] uppercase tracking-[0.25em] text-bone/50 mb-4">Estudio</div>
+        <ul class="space-y-2 text-sm">
+          <li><a class="ed-link" href="#estudio">Sobre</a></li>
+          <li><a class="ed-link" href="#proyectos">Proyectos</a></li>
+          <li><a class="ed-link" href="#manifiesto">Proceso</a></li>
+          <li><a class="ed-link" href="#contacto">Contacto</a></li>
+        </ul>
+      </div>
+      <div class="col-span-12 md:col-span-3">
+        <div class="text-[11px] uppercase tracking-[0.25em] text-bone/50 mb-4">Contacto</div>
+        <ul class="space-y-2 text-sm">
+          <li>+57 314 310 1649</li>
+          <li>+57 310 226 4229</li>
+          <li>mgservicegroupsas@gmail.com</li>
+          <li>Bogotá D.C., Colombia</li>
+        </ul>
+      </div>
+    </div>
+    <div class="mt-14 border-t border-bone/10 pt-6 flex flex-wrap items-center justify-between gap-4 text-[11px] uppercase tracking-[0.2em] text-bone/50">
+      <span>© 2015–2026 MG Service Group SAS · NIT confidencial</span>
+      <span>Hecho en Bogotá · <span class="text-brand">Colombia</span></span>
+      <a href="#politica" class="ed-link">Política de datos</a>
+    </div>
   </div>
 </footer>
 
+<!-- POLÍTICA de datos (ancla) -->
+<section id="politica" class="bg-paper text-ink/75 border-t border-ink/10">
+  <div class="max-w-4xl mx-auto px-6 md:px-10 py-14">
+    <p class="sec-num">08 — Política de datos</p>
+    <h3 class="mt-3 serif text-2xl md:text-3xl text-ink tracking-tightish">Tratamos tus datos con respeto.</h3>
+    <p class="mt-5 text-sm leading-relaxed">
+      La información que compartes con MG Service Group SAS se usa únicamente para responder tu solicitud de cotización o consulta comercial. No vendemos ni cedemos datos a terceros. Para solicitar la eliminación de tu información, escribe a <a href="mailto:mgservicegroupsas@gmail.com" class="underline text-ink hover:text-brand">mgservicegroupsas@gmail.com</a>.
+    </p>
+  </div>
+</section>
 
-  <!-- Política de Privacidad -->
-  <section id="politica" class="py-12 bg-gray-50">
-    <div class="container mx-auto px-6 md:px-0 max-w-4xl">
-      <h3 class="text-2xl font-bold mb-4">Política de Tratamiento de Datos</h3>
-      <p class="text-gray-700 mb-3">
-        MG Service Group SAS, como responsable del tratamiento, informa que los datos personales
-        recolectados a través de este sitio serán utilizados con la finalidad de atender solicitudes,
-        cotizaciones, comunicaciones comerciales y seguimiento de proyectos. Los datos se almacenarán
-        en repositorios seguros y no serán compartidos con terceros sin autorización, salvo obligación legal.
-      </p>
-      <p class="text-gray-700 mb-3">
-        Como titular, puedes ejercer tus derechos de acceso, actualización, rectificación y supresión de datos
-        escribiendo a <a href="mailto:mgservicegroupsas@gmail.com" class="text-blue-600 underline">mgservicegroupsas@gmail.com</a>.
-        Esta política se acoge a la Ley 1581 de 2012 y normas complementarias.
-      </p>
-      <p class="text-gray-700">Al enviar el formulario, manifiestas que has leído y aceptas esta política.</p>
-    </div>
-  </section>
+<!-- Scripts -->
+<script>
+  // Lucide
+  if (window.lucide) lucide.createIcons();
 
-  <!-- Toast -->
-  <div id="toast"></div>
+  // Progress bar
+  const progress = document.getElementById('progress');
+  const updateProgress = () => {
+    const h = document.documentElement;
+    const pct = (h.scrollTop || document.body.scrollTop) / (h.scrollHeight - h.clientHeight) * 100;
+    progress.style.width = (pct || 0) + '%';
+  };
+  window.addEventListener('scroll', updateProgress, { passive: true });
 
-  <!-- Scripts -->
-  <script>
-    function openModal(img){ const m=document.getElementById("imageModal"); const mi=document.getElementById("modalImg"); m.style.display="block"; mi.src=img.src; }
-    function closeModal(){ document.getElementById("imageModal").style.display="none"; }
-
-    function showToast(text){ const t=document.getElementById('toast'); t.textContent=text; t.style.display='block'; setTimeout(()=>{t.style.display='none';}, 3500); }
-
-    // Nuevo endpoint de Google Apps Script
-    const GS_ENDPOINT = "https://script.google.com/macros/s/AKfycbyfY7eJWE0dWFLVqdVAh4vRQYkVcvBGazTM5uoML4RjfeJDDW9S24aLRgdenmyHIxCb/exec";
-
-    const form = document.getElementById("contactForm");
-    const submitBtn = document.getElementById("submitBtn");
-
-    form.addEventListener("submit", async function(e){
-      e.preventDefault();
-      const consent = document.getElementById("consent");
-      if(!consent.checked){ alert("Por favor acepta el tratamiento de datos personales."); return; }
-
-      submitBtn.disabled = true; submitBtn.textContent = 'Enviando…';
-
-      const payload = {
-        Nombre:   form.querySelector("[name=Nombre]").value,
-        Apellido: form.querySelector("[name=Apellido]").value,
-        Email:    form.querySelector("[name=Email]").value,
-        Telefono: form.querySelector("[name=Telefono]").value,
-        Mensaje:  form.querySelector("[name=Mensaje]").value,
-        sourceUrl: location.href
-      };
-
-      try{
-        await fetch(GS_ENDPOINT, {
-          method: "POST",
-          headers: { "Content-Type": "text/plain;charset=utf-8" },
-          body: JSON.stringify(payload)
-        });
-        showToast("✅ Registro enviado. Revisa tu correo y hoja.");
-        form.reset(); consent.checked = false;
-      }catch(err){
-        alert("❌ Error de red: " + err.message);
-      } finally {
-        submitBtn.disabled = false; submitBtn.textContent = 'Enviar';
-      }
-    });
-
-    feather.replace();
-  </script>
-  <!-- Ajuste para corregir desplazamiento en navegación móvil -->
-  <script>
-    // Ajustar desplazamiento para compensar la altura del header fijo
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function(e) {
-        const targetId = this.getAttribute('href');
-        if (targetId.startsWith("#") && targetId.length > 1) {
+  // Lenis smooth scroll
+  let lenis;
+  try {
+    lenis = new Lenis({ duration: 1.1, smoothWheel: true, easing: (t)=> 1 - Math.pow(1 - t, 3) });
+    function raf(time){ lenis.raf(time); requestAnimationFrame(raf); }
+    requestAnimationFrame(raf);
+    lenis.on('scroll', () => updateProgress());
+    // Anchor links smooth
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', (e) => {
+        const id = a.getAttribute('href');
+        if (id && id.length > 1 && document.querySelector(id)) {
           e.preventDefault();
-          const targetElement = document.querySelector(targetId);
-          const headerOffset = 100; // Ajusta si el header cambia de altura
-          const elementPosition = targetElement.getBoundingClientRect().top + window.scrollY;
-          const offsetPosition = elementPosition - headerOffset;
-
-          window.scrollTo({
-            top: offsetPosition,
-            behavior: "smooth"
-          });
-
-          // Si el menú móvil está abierto, se cierra al hacer clic
-          const mobileMenu = document.getElementById('mobile-menu');
-          if (mobileMenu && mobileMenu.classList.contains('open')) {
-            mobileMenu.classList.remove('open');
-            setTimeout(() => mobileMenu.classList.add('hidden'), 300);
-          }
+          lenis.scrollTo(id, { duration: 1.2 });
+          // Close mobile menu
+          document.getElementById('menu').classList.add('hidden');
         }
       });
     });
-  </script>
+  } catch(err) { console.warn('Lenis init skipped', err); }
+
+  // Cursor blob
+  const blob = document.getElementById('blob');
+  if (blob) {
+    window.addEventListener('mousemove', (e) => {
+      blob.style.left = e.clientX + 'px';
+      blob.style.top = e.clientY + 'px';
+    });
+    document.querySelectorAll('a, button, .proj-card').forEach(el => {
+      el.addEventListener('mouseenter', () => {
+        if (el.closest('#servicios') || el.classList.contains('proj-card')) blob.classList.add('blue');
+        else blob.classList.add('big');
+      });
+      el.addEventListener('mouseleave', () => { blob.classList.remove('big'); blob.classList.remove('blue'); });
+    });
+  }
+
+  // Mobile menu
+  const menuBtn = document.getElementById('menu-btn');
+  const menu = document.getElementById('menu');
+  if (menuBtn && menu) {
+    menuBtn.addEventListener('click', () => menu.classList.toggle('hidden'));
+  }
+
+  // Hero video fallback: if video fails or cannot load, show image
+  (function(){
+    const v = document.getElementById('hero-video');
+    const img = document.getElementById('hero-fallback');
+    if (!v) return;
+    const showFallback = () => { v.style.display = 'none'; img.classList.remove('hidden'); };
+    v.addEventListener('error', showFallback);
+    v.addEventListener('stalled', () => setTimeout(() => { if (v.readyState < 2) showFallback(); }, 4000));
+    setTimeout(() => { if (v.readyState < 2) showFallback(); }, 6000);
+  })();
+
+  // GSAP animations
+  if (window.gsap) {
+    gsap.registerPlugin(ScrollTrigger);
+    if (lenis) {
+      lenis.on('scroll', ScrollTrigger.update);
+      gsap.ticker.add((t)=> lenis.raf(t*1000));
+      gsap.ticker.lagSmoothing(0);
+    }
+    // Hero text mask reveal
+    gsap.set('.mask-reveal > span', { y: '110%' });
+    gsap.to('.mask-reveal > span', { y: '0%', duration: 1.1, ease: 'power4.out', stagger: 0.12, delay: .25 });
+
+    // Parallax on hero media
+    gsap.to('#hero-video', {
+      yPercent: 18, ease: 'none',
+      scrollTrigger: { trigger: '#top', start: 'top top', end: 'bottom top', scrub: true }
+    });
+
+    // Parallax on service images
+    document.querySelectorAll('[data-parallax]').forEach((el) => {
+      const amount = parseFloat(el.dataset.parallax) || 0.1;
+      gsap.fromTo(el, { yPercent: -amount * 40 }, {
+        yPercent: amount * 40,
+        ease: 'none',
+        scrollTrigger: { trigger: el.closest('article, section'), start: 'top bottom', end: 'bottom top', scrub: true }
+      });
+    });
+
+    // Reveal headings
+    gsap.utils.toArray('section h2, section h3').forEach((h) => {
+      gsap.from(h, {
+        y: 40, opacity: 0, duration: 1, ease: 'power3.out',
+        scrollTrigger: { trigger: h, start: 'top 85%' }
+      });
+    });
+
+    // Project cards stagger
+    gsap.from('.proj-card', {
+      y: 60, opacity: 0, duration: 1, ease: 'power3.out', stagger: 0.08,
+      scrollTrigger: { trigger: '#proyectos', start: 'top 70%' }
+    });
+  }
+
+  // Swiper
+  if (window.Swiper) {
+    const sw = new Swiper('.mg-swiper', {
+      slidesPerView: 1.2, spaceBetween: 16,
+      breakpoints: { 640: { slidesPerView: 2.2 }, 1024: { slidesPerView: 3.2, spaceBetween: 24 } },
+      loop: true, speed: 700,
+      navigation: { prevEl: '#prev-slide', nextEl: '#next-slide' }
+    });
+  }
+
+  // Contact form → Formsubmit.co (envía correo a mgservicegroupsas@gmail.com)
+  const form = document.getElementById('contact-form');
+  if (form) {
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const status = document.getElementById('form-status');
+      status.textContent = 'Enviando…';
+      const data = new FormData(form);
+      try {
+        const res = await fetch('https://formsubmit.co/ajax/mgservicegroupsas@gmail.com', {
+          method: 'POST',
+          headers: { 'Accept': 'application/json' },
+          body: data
+        });
+        if (!res.ok) throw new Error('Network');
+        const json = await res.json().catch(() => ({}));
+        if (json && json.success === 'false') throw new Error(json.message || 'Send failed');
+        status.textContent = '✓ Gracias. Recibimos tu solicitud; te escribimos en breve.';
+        form.reset();
+      } catch (err) {
+        status.textContent = 'Hubo un problema al enviar. Escríbenos a mgservicegroupsas@gmail.com o por WhatsApp +57 321 234 5678.';
+      }
+    });
+  }
+</script>
+
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

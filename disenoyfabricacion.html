@@ -1,234 +1,405 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Diseño y Fabricación | MG Service Group SAS</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
-  <script src="https://unpkg.com/feather-icons"></script>
-  <link rel="icon" type="image/jpeg" href="logo-mgservices-group.jpeg"/>
-  <style>
-    html { scroll-behavior: smooth; }
-    .titulo-fuerte { font-family:'Anton',sans-serif;letter-spacing:1px; }
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+<title>Diseño y fabricación de estructuras metálicas — MG Service Group SAS</title>
+<meta name="description" content="Diseño, cálculo, fabricación y montaje de estructuras metálicas en acero ASTM A36, A572 y tubería estructural para obra industrial, comercial y residencial. Soldadura calificada AWS D1.1. Bogotá, Colombia." />
+<meta name="theme-color" content="#0e0d0b" />
+<link rel="icon" href="https://mgservicesas.com/logo-mgservices-group.jpeg" />
 
-    /* Banner industrial */
-    .parallax {
-      background-image: url('banner diseno y fabricacion.jpeg');
-      background-attachment: fixed;
-      background-position: center;
-      background-size: cover;
-      height: 60vh;
-      position: relative;
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          ink: '#0e0d0b', ink2: '#1a1816',
+          bone: '#f4ede2', bone2: '#ebe2d3', paper: '#faf6ef',
+          brand: '#f88838', brandDeep: '#d86b1e', brandDark: '#9c4a12',
+          steel: '#0878b8', steelDeep: '#065a8a', steelSoft: '#e6f2fa',
+          rust: '#c82838'
+        },
+        fontFamily: {
+          serif: ['Fraunces','ui-serif','Georgia','serif'],
+          sans: ['Inter','ui-sans-serif','system-ui','sans-serif']
+        },
+        letterSpacing: { tightest: '-0.04em', tightish: '-0.02em' }
+      }
     }
-    .overlay {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(to top, rgba(0,0,0,0.3), rgba(0,0,0,0.05));
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      color: white;
-    }
-  </style>
+  }
+</script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
+<script src="https://unpkg.com/lucide@latest"></script>
+
+<style>
+  html, body { background: #f4ede2; color: #0e0d0b; }
+  body { font-family: 'Inter', system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
+  .serif { font-family: 'Fraunces', Georgia, serif; font-variation-settings: 'opsz' 72; }
+  .grain::after{ content:""; position:fixed; inset:0; pointer-events:none; mix-blend-mode:multiply; opacity:.08;
+    background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='300' height='300'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 .6 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>"); z-index: 60; }
+  .ed-link { position:relative; }
+  .ed-link::after{ content:""; position:absolute; left:0; right:0; bottom:-4px; height:1px; background:currentColor; transform: scaleX(0); transform-origin: right center; transition: transform .5s cubic-bezier(.2,.8,.2,1); }
+  .ed-link:hover::after{ transform: scaleX(1); transform-origin: left center; }
+  @keyframes kenburns { 0%{ transform:scale(1.04) translate3d(0,0,0);} 100%{ transform:scale(1.18) translate3d(-1.5%, -1.5%, 0);} }
+  .kenburns{ animation: kenburns 18s ease-in-out infinite alternate; }
+  #progress{ position:fixed; top:0; left:0; height:2px; width:0%; background: linear-gradient(90deg,#f88838,#0878b8); z-index: 90; transition: width .1s linear; }
+  #blob{ position:fixed; width:16px; height:16px; border-radius:999px; background:#0e0d0b; mix-blend-mode: difference; pointer-events:none; z-index:80; transform: translate(-50%,-50%); transition: width .2s ease, height .2s ease, background .2s ease; }
+  #blob.big{ width:72px; height:72px; background:#f88838; }
+  .duotone-blue{ position:relative; }
+  .duotone-blue::before{ content:""; position:absolute; inset:0; background: linear-gradient(130deg, rgba(8,120,184,.32), rgba(14,13,11,.60)); mix-blend-mode: multiply; pointer-events:none; }
+  .duotone-orange{ position:relative; }
+  .duotone-orange::before{ content:""; position:absolute; inset:0; background: linear-gradient(130deg, rgba(248,136,56,.30), rgba(14,13,11,.55)); mix-blend-mode: multiply; pointer-events:none; }
+  .vignette::after{ content:""; position:absolute; inset:0; background: radial-gradient(ellipse at center, transparent 40%, rgba(0,0,0,.55) 100%); pointer-events:none; }
+  .mask-reveal{ overflow: hidden; display: inline-block; }
+  .mask-reveal > span{ display:inline-block; will-change: transform; }
+  .nav-glass{ background: rgba(244,237,226,.65); backdrop-filter: saturate(1.4) blur(14px); -webkit-backdrop-filter: saturate(1.4) blur(14px); }
+  .blue-wash{ background: linear-gradient(135deg, #e6f2fa 0%, #ffffff 50%, #fff4ea 100%); }
+  .sec-num{ font-family: 'Fraunces', serif; letter-spacing: .2em; font-size: .72rem; color:#6b6256; text-transform: uppercase; }
+  ::-webkit-scrollbar{ width: 10px; } ::-webkit-scrollbar-track{ background: #ebe2d3;} ::-webkit-scrollbar-thumb{ background:#0e0d0b; border-radius: 10px;}
+  .grad-text{ background: linear-gradient(90deg,#f88838,#0878b8); -webkit-background-clip:text; background-clip:text; color:transparent; }
+  img{ background:#1a1816; }
+  @media (prefers-reduced-motion: reduce){ .kenburns{ animation:none !important; } }
+</style>
 </head>
+<body class="grain antialiased overflow-x-hidden">
 
-<body class="font-sans text-gray-800">
+<div id="progress"></div>
+<div id="blob" class="hidden md:block"></div>
 
-  <!-- HEADER -->
-  <header class="bg-white shadow-md fixed w-full z-50 top-0 left-0">
-    <div class="container mx-auto flex justify-between items-center p-4">
-      <a href="index.html#inicio">
-        <img src="logo-mgservices-group.jpeg" alt="MG Service Group SAS" class="h-16">
+<!-- NAV -->
+<header class="fixed top-0 inset-x-0 z-50">
+  <div class="nav-glass border-b border-ink/10">
+    <div class="max-w-[1440px] mx-auto px-6 md:px-10 h-20 flex items-center justify-between">
+      <a href="index.html" class="flex items-center gap-4 group">
+        <span class="relative inline-flex items-center justify-center">
+          <span class="absolute -inset-1.5 rounded-2xl bg-gradient-to-br from-brand/25 via-transparent to-steel/25 blur-md opacity-80 group-hover:opacity-100 transition-opacity"></span>
+          <span class="relative inline-flex items-center justify-center h-14 w-14 bg-white rounded-xl ring-1 ring-ink/10 shadow-[0_4px_14px_rgba(14,13,11,0.08)] p-1.5">
+            <img src="https://mgservicesas.com/logo-mgservices-group.jpeg" alt="MG Service Group SAS" class="max-h-full max-w-full object-contain" style="background:transparent;" />
+          </span>
+        </span>
+        <span class="flex flex-col leading-tight">
+          <span class="serif text-[19px] tracking-tightish text-ink">MG Service <span class="text-ink/55">Group</span></span>
+          <span class="text-[10px] uppercase tracking-[0.25em] text-ink/55">SAS · Bogotá · desde 2015</span>
+        </span>
       </a>
-
-      <!-- Botón hamburguesa -->
-      <button id="menu-btn" class="md:hidden text-gray-800 focus:outline-none">
-        <i data-feather="menu" class="w-8 h-8"></i>
-      </button>
-
-      <!-- Menú -->
-      <nav id="menu" class="hidden md:flex space-x-8 ml-12 absolute md:static top-full left-0 w-full md:w-auto bg-white md:bg-transparent shadow-md md:shadow-none opacity-0 md:opacity-100 transform md:translate-y-0 -translate-y-5 transition-all duration-300 ease-in-out">
-        <a href="index.html#inicio" class="block px-4 py-2 hover:bg-black hover:text-white transition">Inicio</a>
-        <a href="index.html#quienes" class="block px-4 py-2 hover:bg-black hover:text-white transition">Quiénes Somos</a>
-        <a href="index.html#servicios" class="block px-4 py-2 hover:bg-black hover:text-white transition">Servicios</a>
-        <a href="index.html#proyectos" class="block px-4 py-2 hover:bg-black hover:text-white transition">Proyectos</a>
-        <a href="index.html#aliados" class="block px-4 py-2 hover:bg-black hover:text-white transition">Aliados</a>
-        <a href="index.html#contacto" class="block px-4 py-2 hover:bg-black hover:text-white transition">Contacto</a>
+      <nav class="hidden md:flex items-center gap-8 text-sm">
+        <a href="index.html#estudio" class="ed-link">Estudio</a>
+        <a href="index.html#servicios" class="ed-link">Servicios</a>
+        <a href="index.html#proyectos" class="ed-link">Proyectos</a>
+        <a href="index.html#contacto" class="ed-link">Contacto</a>
       </nav>
+      <a href="index.html#contacto" class="hidden md:inline-flex items-center gap-2 rounded-full bg-ink text-bone px-4 py-2 text-sm hover:bg-brand transition-colors">Cotizar →</a>
+      <button id="menu-btn" class="md:hidden text-ink" aria-label="Menú"><i data-lucide="menu"></i></button>
     </div>
-  </header>
-
-  <!-- Espacio para header fijo -->
-  <div class="h-20 md:h-24"></div>
-
-  <!-- BANNER -->
-  <section class="parallax">
-    <div class="overlay">
-      <h1 class="text-5xl md:text-6xl titulo-fuerte mb-4 drop-shadow-lg">Diseño y Fabricación</h1>
-      <p class="text-lg md:text-xl max-w-2xl text-gray-200">Estructuras metálicas de precisión, desde el diseño hasta el montaje final.</p>
+  </div>
+  <div id="menu" class="hidden md:hidden bg-bone border-b border-ink/10">
+    <div class="px-6 py-6 flex flex-col gap-4 text-lg">
+      <a href="index.html">Inicio</a>
+      <a href="index.html#servicios">Servicios</a>
+      <a href="index.html#proyectos">Proyectos</a>
+      <a href="index.html#contacto" class="rounded-full bg-ink text-bone px-5 py-3 text-center">Cotizar →</a>
     </div>
-  </section>
+  </div>
+</header>
 
-  <!-- SECCIÓN 1 -->
-  <section class="py-20 bg-gray-50">
-    <div class="container mx-auto px-6 md:px-0 max-w-6xl grid md:grid-cols-2 gap-10 items-center">
-      <div>
-        <h2 class="text-3xl titulo-fuerte mb-4 text-[#0e5a83]">Estructuras Livianas y Pesadas</h2>
-        <p class="text-gray-700 text-lg leading-relaxed">
-          En <strong>MG Service Group SAS</strong> diseñamos, fabricamos y montamos estructuras metálicas adaptadas a cada necesidad:
-          desde cubiertas livianas hasta estructuras pesadas para bodegas, galpones y espacios industriales.
+<!-- HERO -->
+<section id="top" class="relative h-[92svh] min-h-[680px] overflow-hidden bg-ink text-bone">
+  <img src="https://images.pexels.com/photos/2760343/pexels-photo-2760343.jpeg?auto=compress&cs=tinysrgb&w=1920"
+       onerror="this.onerror=null;this.src='https://mgservicesas.com/disenoyfabricaciondeestructurasmetalicas.png';"
+       alt="Soldadura de estructura metálica en taller MG Service"
+       class="absolute inset-0 w-full h-full object-cover kenburns opacity-95" />
+  <div class="absolute inset-0 pointer-events-none" style="background: linear-gradient(120deg, rgba(8,120,184,.30) 0%, rgba(14,13,11,.70) 45%, rgba(248,136,56,.22) 100%); mix-blend-mode: multiply;"></div>
+  <div class="absolute inset-0 pointer-events-none" style="background: radial-gradient(ellipse at 30% 70%, rgba(0,0,0,0) 0%, rgba(0,0,0,.80) 100%);"></div>
+
+  <div class="absolute top-24 left-0 right-0 z-10">
+    <div class="max-w-[1440px] mx-auto px-6 md:px-10 flex items-center gap-3 text-[11px] tracking-[0.25em] uppercase text-bone/70">
+      <a href="index.html" class="hover:text-bone">Inicio</a>
+      <span class="text-bone/40">/</span>
+      <a href="index.html#servicios" class="hover:text-bone">Servicios</a>
+      <span class="text-bone/40">/</span>
+      <span class="text-brand">Diseño y fabricación</span>
+    </div>
+  </div>
+
+  <div class="relative z-10 h-full max-w-[1440px] mx-auto px-6 md:px-10 pt-32 pb-14 flex flex-col justify-end">
+    <div class="flex items-center gap-3 mb-6">
+      <span class="h-px w-10 bg-steel"></span>
+      <span class="text-xs tracking-[0.3em] uppercase text-steel">Servicio 01 / 04</span>
+    </div>
+    <h1 class="serif font-light tracking-tightest leading-[0.95] max-w-5xl" style="font-size: clamp(2.75rem, 7vw, 7.5rem);">
+      <span class="mask-reveal"><span>Diseño y</span></span><br/>
+      <span class="mask-reveal"><span><em class="italic font-extralight grad-text">fabricación</em> metálica.</span></span>
+    </h1>
+    <p class="mt-8 max-w-2xl text-bone/85 text-base md:text-lg leading-relaxed">
+      Ingeniería estructural, taller propio, soldadura calificada AWS D1.1 y montaje con grúas certificadas. Del dibujo a la obra, bajo un mismo techo.
+    </p>
+    <div class="mt-10 flex flex-wrap items-center gap-4">
+      <a href="index.html#contacto" class="inline-flex items-center gap-3 rounded-full bg-bone text-ink px-6 py-3 text-sm hover:bg-brand hover:text-bone transition-colors">Cotizar un proyecto <i data-lucide="arrow-up-right" class="w-4 h-4"></i></a>
+      <a href="#ficha" class="inline-flex items-center gap-3 rounded-full border border-bone/40 text-bone px-6 py-3 text-sm hover:bg-steel hover:border-steel transition-colors">Ver ficha técnica</a>
+    </div>
+  </div>
+</section>
+
+<!-- FICHA TÉCNICA -->
+<section id="ficha" class="relative bg-bone text-ink">
+  <div class="max-w-[1440px] mx-auto px-6 md:px-10 py-24 md:py-36">
+    <div class="grid grid-cols-12 gap-8 md:gap-14">
+      <aside class="col-span-12 md:col-span-3">
+        <p class="sec-num">01 — Ficha técnica</p>
+        <div class="mt-3 flex items-center gap-3">
+          <span class="h-px w-10 bg-ink"></span>
+          <span class="h-px w-4 bg-steel"></span>
+          <span class="h-px w-2 bg-brand"></span>
+        </div>
+      </aside>
+      <div class="col-span-12 md:col-span-9">
+        <h2 class="serif tracking-tightest leading-[0.98]" style="font-size: clamp(2rem, 4.8vw, 4.25rem);">
+          Ingeniería verificada, <em class="italic font-extralight text-ink/70">soldadura firmada</em>.
+        </h2>
+        <p class="mt-8 max-w-3xl text-ink/75 leading-relaxed">
+          Cada estructura sale de nuestro taller con planos shop drawings, reporte de soldadura, inspección visual y ficha de pintura. La trazabilidad es parte del producto.
         </p>
-        <p class="mt-4 text-gray-700 text-lg leading-relaxed">
-          Garantizamos precisión en el cálculo estructural, soldadura certificada y control dimensional riguroso.
-          Nuestro enfoque está en la seguridad, durabilidad y cumplimiento de normativas técnicas colombianas.
-        </p>
-      </div>
-      <div>
-        <img src="estructurametalica.png" alt="Estructura metálica MG" class="rounded-xl shadow-lg w-full">
-      </div>
-    </div>
-  </section>
+        <div class="mt-14 grid md:grid-cols-2 gap-10">
+          <div>
+            <h3 class="serif text-2xl md:text-3xl">Aceros que utilizamos</h3>
+            <ul class="mt-5 space-y-3 text-ink/80">
+              <li class="flex items-start gap-3"><i data-lucide="square-check" class="w-4 h-4 mt-1 text-brand"></i><span>ASTM A36 — vigas, platinas, ángulos</span></li>
+              <li class="flex items-start gap-3"><i data-lucide="square-check" class="w-4 h-4 mt-1 text-brand"></i><span>ASTM A572 Gr.50 — alta resistencia</span></li>
+              <li class="flex items-start gap-3"><i data-lucide="square-check" class="w-4 h-4 mt-1 text-brand"></i><span>ASTM A500 / A501 — tubería estructural</span></li>
+              <li class="flex items-start gap-3"><i data-lucide="square-check" class="w-4 h-4 mt-1 text-brand"></i><span>Lámina galvanizada Z-275 y aluzinc AZ-150</span></li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="serif text-2xl md:text-3xl">Procesos en taller</h3>
+            <ul class="mt-5 space-y-3 text-ink/80">
+              <li class="flex items-start gap-3"><i data-lucide="square-check" class="w-4 h-4 mt-1 text-steel"></i><span>Corte por plasma CNC y oxicorte</span></li>
+              <li class="flex items-start gap-3"><i data-lucide="square-check" class="w-4 h-4 mt-1 text-steel"></i><span>Soldadura SMAW, GMAW, FCAW bajo AWS D1.1</span></li>
+              <li class="flex items-start gap-3"><i data-lucide="square-check" class="w-4 h-4 mt-1 text-steel"></i><span>Granallado y pintura electrostática</span></li>
+              <li class="flex items-start gap-3"><i data-lucide="square-check" class="w-4 h-4 mt-1 text-steel"></i><span>Ensayos VT, PT y reportes de control</span></li>
+            </ul>
+          </div>
+        </div>
 
-  <!-- SECCIÓN 2 -->
-  <section class="py-20 bg-white">
-    <div class="container mx-auto px-6 md:px-0 max-w-6xl grid md:grid-cols-2 gap-10 items-center">
-      <div class="order-2 md:order-1">
-        <img src="estructuras.png" alt="Montaje estructural MG" class="rounded-xl shadow-lg w-full">
-      </div>
-      <div class="order-1 md:order-2">
-        <h2 class="text-3xl titulo-fuerte mb-4 text-[#0e5a83]">Calidad y Control Técnico</h2>
-        <ul class="text-gray-700 text-lg leading-relaxed list-disc pl-5 space-y-2">
-          <li>Diseños personalizados con software estructural avanzado.</li>
-          <li>Procesos de fabricación certificados bajo control dimensional y soldadura calificada.</li>
-          <li>Supervisión técnica constante y protocolos de seguridad industrial.</li>
-          <li>Entrega de planos <em>As-Built</em> y dosieres de calidad completos.</li>
-          <li>Compromiso con la sostenibilidad y la optimización de materiales.</li>
-        </ul>
-      </div>
-    </div>
-  </section>
-
-  <!-- CTA -->
-  <section class="py-16 bg-[#0e5a83] text-white text-center">
-    <h2 class="text-3xl md:text-4xl titulo-fuerte mb-4">¿Listo para construir tu próximo proyecto?</h2>
-    <p class="text-lg mb-8">Contáctanos y descubre cómo nuestra experiencia puede impulsar tus resultados.</p>
-    <a href="index.html#contacto" class="bg-black hover:bg-gray-800 text-white px-10 py-3 rounded-lg transition">Contáctanos</a>
-    <br><br>
-    <a href="index.html#servicios" class="text-sm underline hover:text-gray-200">← Volver a Servicios</a>
-  </section>
-
-  <!-- FOOTER -->
-  <footer class="bg-black text-white pt-12">
-    <div class="container mx-auto px-6 md:px-0 grid md:grid-cols-4 gap-8 border-b border-gray-700 pb-8">
-      <div class="flex flex-col items-start">
-        <a href="index.html#inicio"><img src="logo-negro.png" alt="MG Service Group SAS" class="h-20 mb-4"></a>
-        <p class="text-sm text-gray-400">© 2025 MG Service Group SAS</p>
-      </div>
-      <div>
-        <h4 class="font-bold mb-4">Navegación</h4>
-        <ul class="space-y-2 text-gray-400">
-          <li><a href="index.html#inicio" class="hover:text-blue-400">Inicio</a></li>
-          <li><a href="index.html#quienes" class="hover:text-blue-400">Quiénes Somos</a></li>
-          <li><a href="index.html#servicios" class="hover:text-blue-400">Servicios</a></li>
-          <li><a href="index.html#proyectos" class="hover:text-blue-400">Proyectos</a></li>
-          <li><a href="index.html#aliados" class="hover:text-blue-400">Aliados</a></li>
-          <li><a href="index.html#contacto" class="hover:text-blue-400">Contacto</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4 class="font-bold mb-4">Contacto</h4>
-        <ul class="space-y-2 text-gray-400">
-          <li>Email: <a href="mailto:mgservicegroupsas@gmail.com" class="hover:text-blue-400">mgservicegroupsas@gmail.com</a></li>
-          <li>Tel: <a href="tel:+573143101649" class="hover:text-blue-400">+57 314 310 1649</a></li>
-          <li>Tel: <a href="tel:+573102264229" class="hover:text-blue-400">+57 310 226 4229</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4 class="font-bold mb-4">Síguenos</h4>
-        <div class="flex space-x-4">
-          <a href="https://www.instagram.com/mgservicegroupsas" target="_blank" class="p-2 bg-gray-800 rounded-full hover:bg-pink-600"><i data-feather="instagram"></i></a>
-          <a href="https://www.facebook.com/share/174gru12zB/" target="_blank" class="p-2 bg-gray-800 rounded-full hover:bg-blue-600"><i data-feather="facebook"></i></a>
-          <a href="https://wa.me/573143101649?text=Hola,%20quiero%20más%20información%20sobre%20sus%20servicios" target="_blank" class="p-2 bg-gray-800 rounded-full hover:bg-green-600"><i data-feather="message-circle"></i></a>
+        <div class="mt-16 grid grid-cols-2 md:grid-cols-4 gap-10 border-t border-ink/15 pt-10">
+          <div><div class="serif text-5xl md:text-6xl tracking-tightest">A36</div><div class="mt-2 text-xs uppercase tracking-[0.22em] text-ink/60">Acero estándar</div></div>
+          <div><div class="serif text-5xl md:text-6xl tracking-tightest text-brand">D1.1</div><div class="mt-2 text-xs uppercase tracking-[0.22em] text-ink/60">Código AWS</div></div>
+          <div><div class="serif text-5xl md:text-6xl tracking-tightest text-steel">+50</div><div class="mt-2 text-xs uppercase tracking-[0.22em] text-ink/60">Toneladas/mes</div></div>
+          <div><div class="serif text-5xl md:text-6xl tracking-tightest italic">CNC</div><div class="mt-2 text-xs uppercase tracking-[0.22em] text-ink/60">Corte por plasma</div></div>
         </div>
       </div>
     </div>
-    <div class="text-center text-gray-500 text-sm mt-6 pb-6">
-      Todos los derechos reservados - MG Service Group SAS
+  </div>
+</section>
+
+<!-- PROCESO 4 pasos -->
+<section class="relative bg-ink text-bone">
+  <div class="max-w-[1440px] mx-auto px-6 md:px-10 pt-24 md:pt-32">
+    <div class="flex items-end justify-between gap-6 flex-wrap">
+      <div>
+        <p class="sec-num text-bone/60">02 — Proceso</p>
+        <h2 class="mt-3 serif tracking-tightest leading-[0.98]" style="font-size: clamp(2rem, 4.8vw, 4.25rem);">Cuatro pasos, <em class="italic font-extralight text-bone/70">una promesa</em>.</h2>
+      </div>
+      <p class="max-w-md text-bone/70">Del plano al montaje, cada paso queda documentado en ficha técnica y firmado por ingeniería.</p>
     </div>
-  </footer>
+  </div>
 
-  <!-- SCRIPTS -->
-  <script>
-feather.replace();
+  <article class="relative mt-20 border-t border-bone/10">
+    <div class="grid grid-cols-12">
+      <div class="col-span-12 md:col-span-7 relative min-h-[60vh] md:min-h-[80vh] overflow-hidden duotone-blue vignette">
+        <img src="https://images.pexels.com/photos/14213937/pexels-photo-14213937.jpeg?auto=compress&cs=tinysrgb&w=1600"
+             onerror="this.onerror=null;this.src='https://mgservicesas.com/disenoyfabricaciondeestructurasmetalicas.png';"
+             alt="Ingeniería estructural y planos de taller" class="absolute inset-0 w-[110%] h-[110%] object-cover kenburns" />
+        <div class="absolute top-6 left-6 text-bone/90 text-[11px] tracking-[0.3em] uppercase"><span class="inline-block px-3 py-1 bg-steel text-bone">Paso 01 · Ingeniería</span></div>
+      </div>
+      <div class="col-span-12 md:col-span-5 bg-ink2 px-6 md:px-12 py-14 md:py-20 flex flex-col justify-center">
+        <div class="flex items-center gap-3 mb-8"><span class="h-px w-10 bg-steel"></span><span class="text-[11px] tracking-[0.3em] uppercase text-steel">Diseño · Cálculo</span></div>
+        <h3 class="serif tracking-tightest leading-[1] text-bone" style="font-size: clamp(1.75rem, 3vw, 3rem);">Ingeniería y planos de taller.</h3>
+        <p class="mt-5 text-bone/75 leading-relaxed">Modelado estructural, memorias de cálculo bajo NSR-10 y planos shop drawings con listas de material, cortes y conexiones detalladas.</p>
+      </div>
+    </div>
+  </article>
 
-// --- Botón hamburguesa ---
-const menuBtn = document.getElementById("menu-btn");
-const menu = document.getElementById("menu");
+  <article class="relative border-t border-bone/10">
+    <div class="grid grid-cols-12">
+      <div class="order-2 md:order-1 col-span-12 md:col-span-5 bg-ink2 px-6 md:px-12 py-14 md:py-20 flex flex-col justify-center">
+        <div class="flex items-center gap-3 mb-8"><span class="h-px w-10 bg-brand"></span><span class="text-[11px] tracking-[0.3em] uppercase text-brand">Corte · Fabricación</span></div>
+        <h3 class="serif tracking-tightest leading-[1] text-bone" style="font-size: clamp(1.75rem, 3vw, 3rem);">Corte, armado y soldadura en taller.</h3>
+        <p class="mt-5 text-bone/75 leading-relaxed">Corte por plasma CNC con tolerancias ±1 mm, armado con plantillas, soldadura calificada y control visual en cada cordón.</p>
+      </div>
+      <div class="order-1 md:order-2 col-span-12 md:col-span-7 relative min-h-[60vh] md:min-h-[80vh] overflow-hidden duotone-orange vignette">
+        <img src="https://images.pexels.com/photos/2760343/pexels-photo-2760343.jpeg?auto=compress&cs=tinysrgb&w=1600"
+             onerror="this.onerror=null;this.src='https://mgservicesas.com/disenoyfabricaciondeestructurasmetalicas.png';"
+             alt="Soldadura en taller de fabricación" class="absolute inset-0 w-[110%] h-[110%] object-cover kenburns" />
+        <div class="absolute top-6 right-6 text-bone/90 text-[11px] tracking-[0.3em] uppercase"><span class="inline-block px-3 py-1 bg-brand text-ink">Paso 02 · Taller</span></div>
+      </div>
+    </div>
+  </article>
 
-menuBtn.addEventListener("click", (e) => {
-  e.stopPropagation();
-  menu.classList.toggle("hidden");
+  <article class="relative border-t border-bone/10">
+    <div class="grid grid-cols-12">
+      <div class="col-span-12 md:col-span-7 relative min-h-[60vh] md:min-h-[80vh] overflow-hidden duotone-blue vignette">
+        <img src="https://images.pexels.com/photos/29976478/pexels-photo-29976478.jpeg?auto=compress&cs=tinysrgb&w=1600"
+             onerror="this.onerror=null;this.src='https://mgservicesas.com/disenoyfabricaciondeestructurasmetalicas.png';"
+             alt="Acabados y pintura electrostática" class="absolute inset-0 w-[110%] h-[110%] object-cover kenburns" />
+        <div class="absolute top-6 left-6 text-bone/90 text-[11px] tracking-[0.3em] uppercase"><span class="inline-block px-3 py-1 bg-steel text-bone">Paso 03 · Acabado</span></div>
+      </div>
+      <div class="col-span-12 md:col-span-5 bg-ink2 px-6 md:px-12 py-14 md:py-20 flex flex-col justify-center">
+        <div class="flex items-center gap-3 mb-8"><span class="h-px w-10 bg-steel"></span><span class="text-[11px] tracking-[0.3em] uppercase text-steel">Granallado · Pintura</span></div>
+        <h3 class="serif tracking-tightest leading-[1] text-bone" style="font-size: clamp(1.75rem, 3vw, 3rem);">Anticorrosivo y pintura horneada.</h3>
+        <p class="mt-5 text-bone/75 leading-relaxed">Granallado SA 2.5, imprimación epóxica de alta adherencia y pintura de acabado poliuretano o esmalte horneado según especificación.</p>
+      </div>
+    </div>
+  </article>
 
-  setTimeout(() => {
-    menu.classList.toggle("opacity-100");
-    menu.classList.toggle("translate-y-0");
-    menu.classList.toggle("-translate-y-5");
-  }, 10);
-});
+  <article class="relative border-t border-bone/10">
+    <div class="grid grid-cols-12">
+      <div class="order-2 md:order-1 col-span-12 md:col-span-5 bg-ink2 px-6 md:px-12 py-14 md:py-20 flex flex-col justify-center">
+        <div class="flex items-center gap-3 mb-8"><span class="h-px w-10 bg-brand"></span><span class="text-[11px] tracking-[0.3em] uppercase text-brand">Montaje · Sitio</span></div>
+        <h3 class="serif tracking-tightest leading-[1] text-bone" style="font-size: clamp(1.75rem, 3vw, 3rem);">Montaje con grúas certificadas.</h3>
+        <p class="mt-5 text-bone/75 leading-relaxed">Plan de izaje, certificaciones, aparejos y personal con carnets vigentes. Instalamos con procedimientos seguros y entregamos con acta.</p>
+      </div>
+      <div class="order-1 md:order-2 col-span-12 md:col-span-7 relative min-h-[60vh] md:min-h-[80vh] overflow-hidden duotone-orange vignette">
+        <img src="https://images.pexels.com/photos/236705/pexels-photo-236705.jpeg?auto=compress&cs=tinysrgb&w=1600"
+             onerror="this.onerror=null;this.src='https://mgservicesas.com/metalica.png';"
+             alt="Montaje de estructura en sitio" class="absolute inset-0 w-[110%] h-[110%] object-cover kenburns" />
+        <div class="absolute top-6 right-6 text-bone/90 text-[11px] tracking-[0.3em] uppercase"><span class="inline-block px-3 py-1 bg-brand text-ink">Paso 04 · Montaje</span></div>
+      </div>
+    </div>
+  </article>
+  <div class="h-20"></div>
+</section>
 
-document.addEventListener("click", (e) => {
-  if (!menu.contains(e.target) && !menuBtn.contains(e.target)) {
-    if (!menu.classList.contains("hidden") && window.innerWidth < 768) {
-      menu.classList.add("hidden");
-      menu.classList.remove("opacity-100", "translate-y-0");
-      menu.classList.add("-translate-y-5");
-    }
+<!-- APLICACIONES -->
+<section class="relative blue-wash text-ink">
+  <div class="max-w-[1440px] mx-auto px-6 md:px-10 py-24 md:py-32">
+    <p class="sec-num">03 — Aplicaciones</p>
+    <h2 class="mt-3 serif tracking-tightest leading-[0.98]" style="font-size: clamp(2rem, 4.8vw, 4.25rem);">Dónde trabajamos.</h2>
+    <div class="mt-14 grid md:grid-cols-3 gap-8">
+      <div class="p-8 bg-white rounded-sm border border-ink/10 hover:border-brand transition">
+        <div class="w-12 h-12 rounded-full bg-brand/15 flex items-center justify-center text-brand mb-5"><i data-lucide="factory" class="w-6 h-6"></i></div>
+        <h3 class="serif text-2xl">Naves industriales</h3>
+        <p class="mt-3 text-ink/75 text-sm leading-relaxed">Bodegas, plantas de producción, centros logísticos y galpones de gran luz con estructura metálica y cubierta aislada.</p>
+      </div>
+      <div class="p-8 bg-white rounded-sm border border-ink/10 hover:border-steel transition">
+        <div class="w-12 h-12 rounded-full bg-steel/15 flex items-center justify-center text-steel mb-5"><i data-lucide="building-2" class="w-6 h-6"></i></div>
+        <h3 class="serif text-2xl">Comercial · Retail</h3>
+        <p class="mt-3 text-ink/75 text-sm leading-relaxed">Centros comerciales, estaciones de servicio, showrooms y locales con cerramientos y cubiertas arquitectónicas.</p>
+      </div>
+      <div class="p-8 bg-white rounded-sm border border-ink/10 hover:border-brand transition">
+        <div class="w-12 h-12 rounded-full bg-brand/15 flex items-center justify-center text-brand mb-5"><i data-lucide="warehouse" class="w-6 h-6"></i></div>
+        <h3 class="serif text-2xl">Entrepisos · Mezanines</h3>
+        <p class="mt-3 text-ink/75 text-sm leading-relaxed">Ampliaciones, mezanines industriales y entrepisos metálicos con placa colaborante o paneles deck.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="relative bg-ink text-bone overflow-hidden">
+  <div class="absolute inset-0 pointer-events-none" style="background: radial-gradient(ellipse at 80% 20%, rgba(8,120,184,.3), transparent 60%), radial-gradient(ellipse at 20% 80%, rgba(248,136,56,.22), transparent 55%);"></div>
+  <div class="relative max-w-[1440px] mx-auto px-6 md:px-10 py-24 md:py-32 text-center">
+    <h2 class="serif tracking-tightest leading-[1] max-w-4xl mx-auto" style="font-size: clamp(2.25rem, 5.5vw, 5rem);">¿Tienes un proyecto para <em class="italic font-extralight grad-text">fabricar</em>?</h2>
+    <p class="mt-6 max-w-xl mx-auto text-bone/70">Envíanos tus planos o una descripción del alcance. Te respondemos con estimado inicial y visita técnica.</p>
+    <a href="index.html#contacto" class="mt-10 inline-flex items-center gap-3 rounded-full bg-brand text-ink px-8 py-4 hover:bg-bone transition-colors">Cotizar fabricación <i data-lucide="arrow-up-right" class="w-5 h-5"></i></a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="bg-ink2 text-bone/80 border-t border-bone/10">
+  <div class="max-w-[1440px] mx-auto px-6 md:px-10 py-16 md:py-20">
+    <div class="grid grid-cols-12 gap-10">
+      <div class="col-span-12 md:col-span-5">
+        <div class="flex items-center gap-3">
+          <span class="relative inline-flex items-center justify-center h-12 w-12 bg-white rounded-xl ring-1 ring-bone/20 shadow-md p-1.5">
+            <img src="https://mgservicesas.com/logo-mgservices-group.jpeg" alt="MG Service Group" class="max-h-full max-w-full object-contain" style="background:transparent;" />
+          </span>
+          <span class="serif text-xl">MG Service Group <em class="italic text-bone/50">SAS</em></span>
+        </div>
+        <p class="mt-6 max-w-md text-sm leading-relaxed text-bone/65">Compañía colombiana de ingeniería, fabricación y montaje metálico para los sectores industrial, comercial e institucional.</p>
+      </div>
+      <div class="col-span-6 md:col-span-2">
+        <div class="text-[11px] uppercase tracking-[0.25em] text-bone/50 mb-4">Servicios</div>
+        <ul class="space-y-2 text-sm">
+          <li><a class="ed-link" href="disenoyfabricacion.html">Diseño y fabricación</a></li>
+          <li><a class="ed-link" href="panel-poliuretano.html">Panel poliuretano</a></li>
+          <li><a class="ed-link" href="mantenimiento-industrial.html">Mantenimiento</a></li>
+          <li><a class="ed-link" href="index.html#servicios">Cubiertas metálicas</a></li>
+        </ul>
+      </div>
+      <div class="col-span-6 md:col-span-2">
+        <div class="text-[11px] uppercase tracking-[0.25em] text-bone/50 mb-4">Estudio</div>
+        <ul class="space-y-2 text-sm">
+          <li><a class="ed-link" href="index.html#estudio">Sobre</a></li>
+          <li><a class="ed-link" href="index.html#proyectos">Proyectos</a></li>
+          <li><a class="ed-link" href="index.html#contacto">Contacto</a></li>
+        </ul>
+      </div>
+      <div class="col-span-12 md:col-span-3">
+        <div class="text-[11px] uppercase tracking-[0.25em] text-bone/50 mb-4">Contacto</div>
+        <ul class="space-y-2 text-sm">
+          <li>+57 314 310 1649</li>
+          <li>+57 310 226 4229</li>
+          <li>mgservicegroupsas@gmail.com</li>
+          <li>Bogotá D.C., Colombia</li>
+        </ul>
+      </div>
+    </div>
+    <div class="mt-14 border-t border-bone/10 pt-6 flex flex-wrap items-center justify-between gap-4 text-[11px] uppercase tracking-[0.2em] text-bone/50">
+      <span>© 2015–2026 MG Service Group SAS</span>
+      <span>Hecho en Bogotá · <span class="text-brand">Colombia</span></span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  if (window.lucide) lucide.createIcons();
+  const progress = document.getElementById('progress');
+  const updateProgress = () => { const h = document.documentElement; progress.style.width = ((h.scrollTop || document.body.scrollTop) / (h.scrollHeight - h.clientHeight) * 100 || 0) + '%'; };
+  window.addEventListener('scroll', updateProgress, { passive: true });
+
+  let lenis;
+  try {
+    lenis = new Lenis({ duration: 1.1, smoothWheel: true, easing: (t)=> 1 - Math.pow(1 - t, 3) });
+    (function raf(time){ lenis.raf(time); requestAnimationFrame(raf); })();
+    lenis.on('scroll', () => updateProgress());
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', (e) => {
+        const id = a.getAttribute('href');
+        if (id && id.length > 1 && document.querySelector(id)) { e.preventDefault(); lenis.scrollTo(id, { duration: 1.2 }); const m=document.getElementById('menu'); if(m) m.classList.add('hidden'); }
+      });
+    });
+  } catch(err) {}
+
+  const blob = document.getElementById('blob');
+  if (blob) {
+    window.addEventListener('mousemove', (e) => { blob.style.left = e.clientX + 'px'; blob.style.top = e.clientY + 'px'; });
+    document.querySelectorAll('a, button').forEach(el => {
+      el.addEventListener('mouseenter', () => blob.classList.add('big'));
+      el.addEventListener('mouseleave', () => blob.classList.remove('big'));
+    });
   }
-});
 
-// --- Desplazamiento suave idéntico al index, pero con retardo más inteligente ---
-function smoothScrollTo(targetSelector) {
-  const target = document.querySelector(targetSelector);
-  if (!target) return;
-  const headerOffset = 170; // <-- altura del header (ajustable)
-  const elementPosition = target.getBoundingClientRect().top + window.scrollY;
-  const offsetPosition = elementPosition - headerOffset;
+  const menuBtn = document.getElementById('menu-btn'), menu = document.getElementById('menu');
+  if (menuBtn && menu) menuBtn.addEventListener('click', () => menu.classList.toggle('hidden'));
 
-  // Desplaza con suavidad
-  window.scrollTo({ top: offsetPosition, behavior: "smooth" });
-}
-
-// --- Detecta clics en enlaces internos o hacia index.html ---
-document.querySelectorAll('a[href^="#"], a[href*="index.html#"]').forEach(link => {
-  link.addEventListener("click", function (e) {
-    const href = this.getAttribute("href");
-    if (href.includes("#")) {
-      const hash = href.split("#")[1];
-      e.preventDefault();
-      if (href.startsWith("index.html")) {
-        // Redirige a index y añade el hash a la URL
-        window.location.href = `index.html#${hash}`;
-      } else {
-        // Scroll dentro de la misma página
-        setTimeout(() => smoothScrollTo(`#${hash}`), 300);
-      }
-    }
-  });
-});
-
-// --- Corrige el scroll al entrar desde otra página ---
-window.addEventListener("load", () => {
-  const hash = window.location.hash;
-  if (hash) {
-    // Espera a que el header se fije completamente
-    setTimeout(() => smoothScrollTo(hash), 800);
+  if (window.gsap) {
+    gsap.registerPlugin(ScrollTrigger);
+    if (lenis) { lenis.on('scroll', ScrollTrigger.update); gsap.ticker.add((t)=> lenis.raf(t*1000)); gsap.ticker.lagSmoothing(0); }
+    gsap.set('.mask-reveal > span', { y: '110%' });
+    gsap.to('.mask-reveal > span', { y: '0%', duration: 1.1, ease: 'power4.out', stagger: 0.12, delay: .25 });
+    gsap.utils.toArray('section h2, section h3').forEach((h) => {
+      gsap.from(h, { y: 40, opacity: 0, duration: 1, ease: 'power3.out', scrollTrigger: { trigger: h, start: 'top 85%' } });
+    });
   }
-});
 </script>
-
 
 </body>
 </html>
