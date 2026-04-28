@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+
+  <url>
+    <loc>https://mgservicesas.com/</loc>
+    <lastmod>2026-04-28</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://mgservicesas.com/logo-mgservices-group.jpeg</image:loc>
+      <image:title>MG Service Group SAS</image:title>
+      <image:caption>Estructuras metálicas, cubiertas y panel poliuretano en Bogotá</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://mgservicesas.com/metalica.png</image:loc>
+      <image:title>Estructuras metálicas Bogotá</image:title>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://mgservicesas.com/disenoyfabricacion.html</loc>
+    <lastmod>2026-04-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://mgservicesas.com/estructurasmetalicasboghota.png</image:loc>
+      <image:title>Diseño y fabricación de estructuras metálicas en Bogotá</image:title>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://mgservicesas.com/panel-poliuretano.html</loc>
+    <lastmod>2026-04-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://mgservicesas.com/Panelesdepoliuretano.png</image:loc>
+      <image:title>Panel sándwich en poliuretano Techmet/Metecno</image:title>
+    </image:image>
+  </url>
+
+  <url>
+    <loc>https://mgservicesas.com/mantenimiento-industrial.html</loc>
+    <lastmod>2026-04-28</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://images.pexels.com/photos/30223853/pexels-photo-30223853.jpeg</image:loc>
+      <image:title>Mantenimiento industrial de cubiertas y estructuras</image:title>
+    </image:image>
+  </url>
+
+</urlset>

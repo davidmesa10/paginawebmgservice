@@ -1,0 +1,38 @@
+# robots.txt — MG Service Group SAS
+# https://mgservicesas.com
+
+User-agent: *
+Allow: /
+Disallow: /uploads/
+Disallow: /*?utm_*
+Disallow: /*?fbclid=*
+Disallow: /*?gclid=*
+
+# Crawlers principales
+User-agent: Googlebot
+Allow: /
+
+User-agent: Googlebot-Image
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+# Bots de IA — permitir indexación para visibilidad en LLMs
+User-agent: GPTBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+# Sitemap
+Sitemap: https://mgservicesas.com/sitemap.xml
