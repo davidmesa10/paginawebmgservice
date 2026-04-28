@@ -107,7 +107,49 @@
   /* Hero layered */
   .hero-layer{ position:absolute; inset:0; }
   /* Nav blur */
-  .nav-glass{ background: rgba(244,237,226,.65); backdrop-filter: saturate(1.4) blur(14px); -webkit-backdrop-filter: saturate(1.4) blur(14px); }
+  /* ───── Nav adaptativo ───── */
+  .nav-glass{
+    background: rgba(244,237,226,.0);
+    border-color: rgba(244,237,226,.0) !important;
+    backdrop-filter: saturate(1.2) blur(8px);
+    -webkit-backdrop-filter: saturate(1.2) blur(8px);
+    transition: background-color .45s cubic-bezier(.2,.8,.2,1), border-color .45s cubic-bezier(.2,.8,.2,1), backdrop-filter .45s ease, box-shadow .45s ease;
+  }
+  /* Sobre secciones oscuras (hero, contacto, etc.): vidrio oscuro + textos claros */
+  .nav-glass.is-dark{
+    background: rgba(14,13,11,.32);
+    border-color: rgba(244,237,226,.10) !important;
+    backdrop-filter: saturate(1.4) blur(16px);
+    -webkit-backdrop-filter: saturate(1.4) blur(16px);
+    box-shadow: 0 1px 0 rgba(244,237,226,.06), 0 18px 40px -28px rgba(0,0,0,.55);
+  }
+  .nav-glass.is-dark .nav-text{ color: rgba(244,237,226,.92); }
+  .nav-glass.is-dark .nav-text-mute{ color: rgba(244,237,226,.6); }
+  .nav-glass.is-dark .nav-cta{ background: rgba(244,237,226,.92); color:#0e0d0b; }
+  .nav-glass.is-dark .nav-cta:hover{ background:#f88838; color:#0e0d0b; }
+
+  /* Sobre secciones claras (estudio, servicios, etc.): vidrio crema + textos oscuros */
+  .nav-glass.is-light{
+    background: rgba(244,237,226,.78);
+    border-color: rgba(14,13,11,.08) !important;
+    backdrop-filter: saturate(1.5) blur(18px);
+    -webkit-backdrop-filter: saturate(1.5) blur(18px);
+    box-shadow: 0 1px 0 rgba(14,13,11,.04), 0 18px 40px -28px rgba(14,13,11,.18);
+  }
+  .nav-glass.is-light .nav-text{ color:#0e0d0b; }
+  .nav-glass.is-light .nav-text-mute{ color: rgba(14,13,11,.55); }
+  .nav-glass.is-light .nav-cta{ background:#0e0d0b; color:#f4ede2; }
+  .nav-glass.is-light .nav-cta:hover{ background:#f88838; color:#0e0d0b; }
+
+  /* Indicador de sección activa */
+  .nav-link{ position:relative; padding: 6px 2px; transition: color .35s ease; }
+  .nav-link::after{ content:""; position:absolute; left:0; right:auto; bottom:-2px; height:2px; width: 0; background: currentColor; transition: width .45s cubic-bezier(.2,.8,.2,1); }
+  .nav-link:hover::after, .nav-link.is-active::after{ width:100%; }
+  .nav-link.is-active{ color:#f88838 !important; }
+
+  /* Logo chip sutilmente visible en ambos modos */
+  .nav-glass.is-dark .nav-logo-chip{ background: rgba(244,237,226,.94); }
+  .nav-glass.is-light .nav-logo-chip{ background: #ffffff; }
   /* Blue gradient accent */
   .blue-wash{ background: linear-gradient(135deg, #e6f2fa 0%, #ffffff 50%, #fff4ea 100%); }
   /* Section number */
@@ -130,31 +172,31 @@
 
 <!-- NAV -->
 <header class="fixed top-0 inset-x-0 z-50">
-  <div class="nav-glass border-b border-ink/10">
+  <div id="nav" class="nav-glass is-dark border-b">
     <div class="max-w-[1440px] mx-auto px-6 md:px-10 h-20 flex items-center justify-between">
       <a href="#top" class="flex items-center gap-4 group">
         <span class="relative inline-flex items-center justify-center">
           <span class="absolute -inset-1.5 rounded-2xl bg-gradient-to-br from-brand/25 via-transparent to-steel/25 blur-md opacity-80 group-hover:opacity-100 transition-opacity"></span>
-          <span class="relative inline-flex items-center justify-center h-14 w-14 bg-white rounded-xl ring-1 ring-ink/10 shadow-[0_4px_14px_rgba(14,13,11,0.08)] p-1.5">
+          <span class="nav-logo-chip relative inline-flex items-center justify-center h-14 w-14 rounded-xl ring-1 ring-ink/10 shadow-[0_4px_14px_rgba(14,13,11,0.08)] p-1.5">
             <img src="https://mgservicesas.com/logo-mgservices-group.jpeg" alt="MG Service Group SAS" class="max-h-full max-w-full object-contain" style="background:transparent;" />
           </span>
         </span>
         <span class="flex flex-col leading-tight">
-          <span class="serif text-[19px] tracking-tightish text-ink">MG Service <span class="text-ink/55">Group</span></span>
-          <span class="text-[10px] uppercase tracking-[0.25em] text-ink/55">SAS · Bogotá · desde 2015</span>
+          <span class="serif text-[19px] tracking-tightish nav-text">MG Service <span class="nav-text-mute">Group</span></span>
+          <span class="text-[10px] uppercase tracking-[0.25em] nav-text-mute">SAS · Bogotá · desde 2015</span>
         </span>
       </a>
-      <nav class="hidden md:flex items-center gap-8 text-sm">
-        <a href="#estudio" class="ed-link">Estudio</a>
-        <a href="#servicios" class="ed-link">Servicios</a>
-        <a href="#proyectos" class="ed-link">Proyectos</a>
-        <a href="#manifiesto" class="ed-link">Proceso</a>
-        <a href="#contacto" class="ed-link">Contacto</a>
+      <nav class="hidden md:flex items-center gap-8 text-sm nav-text">
+        <a href="#estudio" class="nav-link" data-target="estudio">Estudio</a>
+        <a href="#servicios" class="nav-link" data-target="servicios">Servicios</a>
+        <a href="#proyectos" class="nav-link" data-target="proyectos">Proyectos</a>
+        <a href="#manifiesto" class="nav-link" data-target="manifiesto">Proceso</a>
+        <a href="#contacto" class="nav-link" data-target="contacto">Contacto</a>
       </nav>
-      <a href="#contacto" class="hidden md:inline-flex items-center gap-2 rounded-full bg-ink text-bone px-4 py-2 text-sm hover:bg-brand transition-colors">
+      <a href="#contacto" class="nav-cta hidden md:inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm transition-colors">
         Cotizar <span>→</span>
       </a>
-      <button id="menu-btn" class="md:hidden text-ink" aria-label="Menú">
+      <button id="menu-btn" class="md:hidden nav-text" aria-label="Menú">
         <i data-lucide="menu"></i>
       </button>
     </div>
@@ -176,12 +218,19 @@
 <section id="top" class="relative h-[100svh] min-h-[720px] overflow-hidden bg-ink text-bone">
   <!-- Layered media: video (best), image fallback, real photo backdrop -->
   <div class="hero-layer">
-    <!-- Hero video with robust image fallback -->
+    <!-- Hero video with multi-source cascade (welding/sparks/industrial activity) -->
     <video
       id="hero-video"
       class="absolute inset-0 w-full h-full object-cover opacity-90"
       autoplay muted loop playsinline preload="metadata"
       poster="https://mgservicesas.com/metalica.png">
+      <!-- Primary: Professional welding steel close-up 1080p (Pexels 6046358, verificado) -->
+      <source src="https://videos.pexels.com/video-files/6046358/6046358-hd_1920_1080_24fps.mp4" type="video/mp4" />
+      <!-- Fallback 1: Slow-motion welding in factory 1080p (Pexels 11887094, verificado) -->
+      <source src="https://videos.pexels.com/video-files/11887094/11887094-hd_1920_1080_25fps.mp4" type="video/mp4" />
+      <!-- Fallback 2: Worker using welding machine 1080p 50fps (Pexels 14314764, verificado) -->
+      <source src="https://videos.pexels.com/video-files/14314764/14314764-hd_1920_1080_50fps.mp4" type="video/mp4" />
+      <!-- Fallback 3: original industrial loop -->
       <source src="https://videos.pexels.com/video-files/855592/855592-hd_1920_1080_25fps.mp4" type="video/mp4" />
     </video>
     <img id="hero-fallback" src="https://mgservicesas.com/metalica.png" alt="Estructura metálica MG Service" class="absolute inset-0 w-full h-full object-cover kenburns hidden" />
@@ -190,8 +239,8 @@
   <div class="hero-layer pointer-events-none" style="background: linear-gradient(120deg, rgba(8,120,184,.32) 0%, rgba(14,13,11,.65) 45%, rgba(248,136,56,.25) 100%); mix-blend-mode: multiply;"></div>
   <div class="hero-layer pointer-events-none" style="background: radial-gradient(ellipse at 30% 70%, rgba(0,0,0,0) 0%, rgba(0,0,0,.75) 100%);"></div>
 
-  <!-- Top marquee ticker -->
-  <div class="absolute top-16 inset-x-0 z-10 overflow-hidden py-3 border-y border-bone/10 bg-ink/30 backdrop-blur-sm">
+  <!-- Top marquee ticker (debajo del nav, top-20 = 80px) -->
+  <div class="absolute top-20 inset-x-0 z-10 overflow-hidden py-3 border-y border-bone/10 bg-ink/35 backdrop-blur-sm">
     <div class="flex gap-12 whitespace-nowrap marq text-bone/70 text-xs uppercase tracking-[0.2em]">
       <span>Estructuras metálicas</span><span>•</span>
       <span>Cubiertas térmicas</span><span>•</span>
@@ -983,6 +1032,7 @@
   let lenis;
   try {
     lenis = new Lenis({ duration: 1.1, smoothWheel: true, easing: (t)=> 1 - Math.pow(1 - t, 3) });
+    window.lenis = lenis; // expose for nav adaptativo
     function raf(time){ lenis.raf(time); requestAnimationFrame(raf); }
     requestAnimationFrame(raf);
     lenis.on('scroll', () => updateProgress());
@@ -1086,6 +1136,65 @@
       navigation: { prevEl: '#prev-slide', nextEl: '#next-slide' }
     });
   }
+
+  // ───── Nav adaptativo: cambia su tono según la sección visible ─────
+  (function(){
+    const nav = document.getElementById('nav');
+    if (!nav) return;
+
+    // Lista de secciones con su tono visual (dark = fondo oscuro, light = fondo claro)
+    const sections = [
+      { id: 'top',         tone: 'dark'  },
+      { id: 'estudio',     tone: 'light' },
+      { id: 'servicios',   tone: 'dark'  },
+      { id: 'proyectos',   tone: 'light' },
+      { id: 'manifiesto',  tone: 'dark'  },
+      { id: 'contacto',    tone: 'dark'  }
+    ];
+
+    const elements = sections
+      .map(s => ({ ...s, el: document.getElementById(s.id) }))
+      .filter(s => s.el);
+
+    const links = Array.from(document.querySelectorAll('.nav-link'));
+
+    function setTone(tone){
+      nav.classList.remove('is-dark','is-light');
+      nav.classList.add(tone === 'dark' ? 'is-dark' : 'is-light');
+    }
+
+    function setActive(id){
+      links.forEach(a => {
+        const t = a.dataset.target;
+        a.classList.toggle('is-active', t === id);
+      });
+    }
+
+    function update(){
+      // Encuentra la sección cuyo punto de referencia (40% viewport) esté dentro del rango
+      const probe = window.innerHeight * 0.32;
+      let current = elements[0];
+      for (const s of elements){
+        const r = s.el.getBoundingClientRect();
+        if (r.top - probe <= 0 && r.bottom - probe > 0){
+          current = s;
+          break;
+        }
+      }
+      if (current){
+        setTone(current.tone);
+        setActive(current.id);
+      }
+    }
+
+    // Update on scroll (lenis or native)
+    if (window.lenis && typeof window.lenis.on === 'function'){
+      window.lenis.on('scroll', update);
+    }
+    window.addEventListener('scroll', update, { passive: true });
+    window.addEventListener('resize', update);
+    update();
+  })();
 
   // Contact form → Formsubmit.co (submit nativo del navegador, máxima fiabilidad)
   const form = document.getElementById('contact-form');
